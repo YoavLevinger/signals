@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import DrawingAnalyzer from './DrawingAnalyzer';
 
 function Home() {
   return (
     <div className="main-menu">
       {/* Decorative background elements */}
      
-      <h1 style={{color: '#2706e4'}}>Signals</h1>
+      <h1>Signals</h1>
       <div className="menu-options">
         <Link to="/drawing-analyzer" className="menu-card">
           <img src="/main-page/drawing-analyzer.png" alt="Drawing Analyzer" className="menu-img" />
@@ -23,7 +24,6 @@ function Home() {
   );
 }
 
-function DrawingAnalyzer() { return <div><h2>Drawing Analyzer</h2></div>; }
 function GuidedDrawing() { return <div><h2>Guided Drawing</h2></div>; }
 function FreeDrawing() { return <div><h2>Free Drawing</h2></div>; }
 
