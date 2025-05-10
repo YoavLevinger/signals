@@ -1,5 +1,24 @@
 # Getting Started with Create React App
 
+## Docker Production Build & Run
+
+### Requirements
+- Docker
+
+### Build the Docker image:
+```bash
+docker build -t my-react-app .
+```
+
+### Run the Docker container:
+```bash
+docker run -p 3000:3000 my-react-app
+```
+
+This will serve the production build at http://localhost:3000 using the `serve` static file server.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
