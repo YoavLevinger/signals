@@ -140,7 +140,7 @@
 
 .analyzer-page {
   max-width: 600px;
-  margin: 40px auto;
+  margin: 10px auto;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 2px 16px rgba(90, 107, 140, 0.08);
@@ -196,4 +196,66 @@
 }
 .send-btn:hover {
   background: #1a047a;
+}
+
+.question-group {
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+.question-header {
+  font-weight: 600;
+  color: #2706e4;
+  margin-bottom: 8px;
+  font-size: 1.08rem;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+}
+.tooltip-icon {
+  background: #2706e4;
+  color: #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.tooltip-icon:hover {
+  background: #1a047a;
+}
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: 260px;
+  background: #fffbe6;
+  color: #333;
+  text-align: left;
+  border-radius: 8px;
+  border: 1px solid #ffe082;
+  box-shadow: 0 2px 8px rgba(90, 107, 140, 0.10);
+  padding: 10px 14px;
+  position: absolute;
+  z-index: 10;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.98rem;
+  line-height: 1.4;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.tooltip-container:hover .tooltip-text,
+.tooltip-container:focus-within .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
