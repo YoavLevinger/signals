@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import DrawingAnalyzer from './DrawingAnalyzer';
+import FreeDrawing from './FreeDrawing';
+import GuidedDrawing from './GuidedDrawing';
 
 function Home() {
   return (
@@ -19,13 +21,15 @@ function Home() {
         <Link to="/free-drawing" className="menu-card">
           <img src="/main-page/free-drawing.png" alt="Free Drawing" className="menu-img" />
         </Link>
+        <Link to="/questioner" className="menu-card">
+          <img src="/main-page/questioner.png" alt="Questioner" className="menu-img" />
+        </Link>
       </div>
     </div>
   );
 }
 
-function GuidedDrawing() { return <div><h2>Guided Drawing</h2></div>; }
-function FreeDrawing() { return <div><h2>Free Drawing</h2></div>; }
+function Questioner() { return <div><h2>Questioner</h2></div>; }
 
 function App() {
   return (
@@ -35,6 +39,7 @@ function App() {
         <Route path="/drawing-analyzer" element={<DrawingAnalyzer />} />
         <Route path="/guided-drawing" element={<GuidedDrawing />} />
         <Route path="/free-drawing" element={<FreeDrawing />} />
+        <Route path="/questioner" element={<Questioner />} />
       </Routes>
     </Router>
   );
