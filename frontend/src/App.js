@@ -4,6 +4,7 @@ import './App.css';
 import DrawingAnalyzer from './DrawingAnalyzer';
 import FreeDrawing from './FreeDrawing';
 import GuidedDrawing from './GuidedDrawing';
+import Animate from './Animate';
 
 function Home() {
   return (
@@ -47,7 +48,6 @@ function FreeDrawingPage() {
   return <><BackButton /><FreeDrawing /></>;
 }
 function Questioner() { return <><BackButton /><div><h2>Questioner</h2></div></>; }
-function Animate() { return <><BackButton /><div><h2>Animate</h2></div></>; }
 
 function App() {
   return (
