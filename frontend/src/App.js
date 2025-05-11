@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 import DrawingAnalyzer from './DrawingAnalyzer';
 import FreeDrawing from './FreeDrawing';
@@ -24,22 +24,41 @@ function Home() {
         <Link to="/questioner" className="menu-card">
           <img src="/main-page/questioner.png" alt="Questioner" className="menu-img" />
         </Link>
+        <Link to="/animate" className="menu-card">
+          <img src="/main-page/animate.png" alt="Animate" className="menu-img" />
+        </Link>
       </div>
     </div>
   );
 }
 
-function Questioner() { return <div><h2>Questioner</h2></div>; }
+function BackButton() {
+  const navigate = useNavigate();
+  return <button className="back-btn" onClick={() => navigate('/')}>← Back</button>;
+}
+
+function DrawingAnalyzerPage() {
+  return <><BackButton /><DrawingAnalyzer /></>;
+}
+function GuidedDrawingPage() {
+  return <><BackButton /><GuidedDrawing /></>;
+}
+function FreeDrawingPage() {
+  return <><BackButton /><FreeDrawing /></>;
+}
+function Questioner() { return <><BackButton /><div><h2>Questioner</h2></div></>; }
+function Animate() { return <><BackButton /><div><h2>Animate</h2></div></>; }
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/drawing-analyzer" element={<DrawingAnalyzer />} />
-        <Route path="/guided-drawing" element={<GuidedDrawing />} />
-        <Route path="/free-drawing" element={<FreeDrawing />} />
+        <Route path="/drawing-analyzer" element={<DrawingAnalyzerPage />} />
+        <Route path="/guided-drawing" element={<GuidedDrawingPage />} />
+        <Route path="/free-drawing" element={<FreeDrawingPage />} />
         <Route path="/questioner" element={<Questioner />} />
+        <Route path="/animate" element={<Animate />} />
       </Routes>
     </Router>
   );
