@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 
-const IMAGE_COUNT = 10; // Change this to the number of images you have
+const IMAGE_COUNT = 12; // Change this to the number of images you have
 
 function BackButton() {
   const navigate = useNavigate();
