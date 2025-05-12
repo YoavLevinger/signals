@@ -12,22 +12,29 @@ function Home() {
       {/* Decorative background elements */}
      
       <h1>Signals</h1>
-      <div className="menu-options">
-        <Link to="/drawing-analyzer" className="menu-card">
-          <img src="/main-page/drawing-analyzer.png" alt="Drawing Analyzer" className="menu-img" />
-        </Link>
-        <Link to="/guided-drawing" className="menu-card">
-          <img src="/main-page/guided-drawing.png" alt="Guided Drawing" className="menu-img" />
-        </Link>
-        <Link to="/free-drawing" className="menu-card">
-          <img src="/main-page/free-drawing.png" alt="Free Drawing" className="menu-img" />
-        </Link>
-        <Link to="/questioner" className="menu-card">
-          <img src="/main-page/questioner.png" alt="Questioner" className="menu-img" />
-        </Link>
-        <Link to="/animate" className="menu-card">
-          <img src="/main-page/animate.png" alt="Animate" className="menu-img" />
-        </Link>
+      <div className="menu-options menu-options-grid">
+        <div className="menu-row">
+          <Link to="/drawing-analyzer" className="menu-card">
+            <img src="/main-page/drawing-analyzer.png" alt="Drawing Analyzer" className="menu-img" />
+          </Link>
+          <Link to="/guided-drawing" className="menu-card">
+            <img src="/main-page/guided-drawing.png" alt="Guided Drawing" className="menu-img" />
+          </Link>
+          <Link to="/free-drawing" className="menu-card">
+            <img src="/main-page/free-drawing.png" alt="Free Drawing" className="menu-img" />
+          </Link>
+        </div>
+        <div className="menu-row">
+          <Link to="/questioner" className="menu-card">
+            <img src="/main-page/questioner.png" alt="Questioner" className="menu-img" />
+          </Link>
+          <Link to="/director" className="menu-card">
+            <img src="/main-page/director.png" alt="Director" className="menu-img" />
+          </Link>
+          <Link to="/picker" className="menu-card">
+            <img src="/main-page/picker.png" alt="Picker" className="menu-img" />
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -48,6 +55,9 @@ function FreeDrawingPage() {
   return <><BackButton /><FreeDrawing /></>;
 }
 function Questioner() { return <><BackButton /><div><h2>Questioner</h2></div></>; }
+function Picker() { return <><BackButton /><div><h2>Picker</h2></div></>; }
+
+function Director() { return <><BackButton /><Animate /></>; }
 
 function App() {
   return (
@@ -58,7 +68,8 @@ function App() {
         <Route path="/guided-drawing" element={<GuidedDrawingPage />} />
         <Route path="/free-drawing" element={<FreeDrawingPage />} />
         <Route path="/questioner" element={<Questioner />} />
-        <Route path="/animate" element={<Animate />} />
+        <Route path="/director" element={<Director />} />
+        <Route path="/picker" element={<Picker />} />
       </Routes>
     </Router>
   );

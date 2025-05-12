@@ -429,8 +429,8 @@
   align-items: center;
 }
 .animate-img-wrapper {
-  width: 320px;
-  height: 220px;
+  width: 480px;
+  height: 330px;
   background: #f7faff;
   border-radius: 12px;
   box-shadow: 0 1px 8px rgba(90, 107, 140, 0.10);
@@ -475,4 +475,21 @@
   gap: 16px;
   justify-content: center;
   margin-top: 10px;
+}
+
+.animate-img-large {
+  max-width: 450px;
+  max-height: 300px;
+}
+
+.menu-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+.menu-row {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
 }
