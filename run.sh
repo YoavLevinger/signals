@@ -1,2 +1,1 @@
-npm start --prefix frontend
-
+nohup npm start --prefix frontend > ~/frontend.log 2>&1 &
