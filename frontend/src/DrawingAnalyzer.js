@@ -89,9 +89,14 @@ const allQuestions = questionGroups.flatMap(g => g.questions);
 function DrawingAnalyzer() {
   const [file, setFile] = React.useState(null);
   const [answers, setAnswers] = React.useState(Array(allQuestions.length).fill(false));
+  const [result, setResult] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
+    setResult(null);
+    setError(null);
   };
 
   const handleCheckboxChange = (idx) => {
@@ -102,10 +107,46 @@ function DrawingAnalyzer() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would send 'file' and 'answers' to the backend
-    alert(`Image: ${file ? file.name : 'None'}\nAnswers: ${answers.map((a, i) => a ? `Q${i+1}` : null).filter(Boolean).join(', ')}`);
+    setResult(null);
+    setError(null);
+    if (!file) {
+      setError('Please upload an image.');
+      return;
+    }
+    setLoading(true);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 25 * 60 * 1000); // 25 minutes
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('question', 'Analyze this drawing.');
+      const response = await fetch('http://127.0.0.1:4001/ask', {
+        method: 'POST',
+        body: formData,
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      console.log('Response status:', response.status);
+      if (response.error) {
+        const text = await response.text();
+        console.log('Response not ok, body:', text);
+        throw new Error('Server error');
+      }
+      const data = await response.json();
+      console.log('Response data:', data);
+      setResult(data.response || data.error || 'No response');
+    } catch (err) {
+      console.log('Error in handleSubmit:', err);
+      if (err.name === 'AbortError') {
+        setError('Request timed out. Please try again.');
+      } else {
+        setError(`Failed to analyze image: ${err.message}`);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   let questionIdx = 0;
@@ -144,8 +185,16 @@ function DrawingAnalyzer() {
             </div>
           ))}
         </div>
-        <button type="submit" className="send-btn">Send</button>
+        <button type="submit" className="send-btn" disabled={loading}>Send</button>
       </form>
+      {loading && <div className="analyzer-loading">Analyzing image, please wait...</div>}
+      {error && <div className="analyzer-error">{error}</div>}
+      {result && (
+        <div className="analyzer-result">
+          <h3>Analysis Result</h3>
+          <div className="analyzer-result-content">{result}</div>
+        </div>
+      )}
     </div>
   );
 }
