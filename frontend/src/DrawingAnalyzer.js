@@ -122,7 +122,8 @@ function DrawingAnalyzer() {
       const formData = new FormData();
       formData.append('image', file);
       formData.append('question', 'Analyze this drawing.');
-      const response = await fetch('http://127.0.0.1:4001/ask', {
+      // const response = await fetch('http://127.0.0.1:4001/ask', {
+      const response = await fetch('http://localhost:4001/ask', {
         method: 'POST',
         body: formData,
         signal: controller.signal,
