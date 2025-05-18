@@ -1,11 +1,11 @@
 # signals
 
-````md
-# Drawing Analyzer - 
+
+# Drawing Analyzer
 
 This project deploys a full-stack AI-powered system to analyze children's drawings for behavioral indicators. It includes a React frontend, a FastAPI backend, and an Ollama server running a vision-capable LLM model (`llama3.2-vision`).
 
----
+
 
 ## Architecture
 
@@ -190,8 +190,3 @@ pkill -f "npm start"
 
 ---
 
-## 📝 License
-
-Apache License 
-
-```
