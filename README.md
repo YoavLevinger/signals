@@ -6,13 +6,17 @@
 This project deploys a full-stack AI-powered system to analyze children's drawings for behavioral indicators. It includes a React frontend, a FastAPI backend, and an Ollama server running a vision-capable LLM model (`llama3.2-vision`).
 
 
+## Sample screens
+![main screen](resources/main-screen.png)
+![drawing-analyzer-upload screen](resources/drawing-analyzer-upload-screen.png)
+![guided-drawing screen](resources/guided-drawing-screen.png)
+![director screen](resources/director-screen.png)
+
 
 ## Architecture
 
 ![Architecture](resources/architecture.jpeg)
                      
-
-
 #Deployment Guide
 
 ## 📦 Requirements
