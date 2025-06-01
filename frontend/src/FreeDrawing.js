@@ -72,9 +72,11 @@ function FreeDrawing() {
             />
           ))}
         </div>
-        <button className={`tool-btn${tool === 'brush' ? ' selected' : ''}`} onClick={() => setTool('brush')}>🖌️ Brush</button>
-        <button className={`tool-btn${tool === 'eraser' ? ' selected' : ''}`} onClick={() => setTool('eraser')}>🧽 Eraser</button>
-        <button className="tool-btn" onClick={clearCanvas}>🗑️ Clear</button>
+        <div className="tool-buttons">
+          <button className={`tool-btn${tool === 'brush' ? ' selected' : ''}`} onClick={() => setTool('brush')}>🖌️ Brush</button>
+          <button className={`tool-btn${tool === 'eraser' ? ' selected' : ''}`} onClick={() => setTool('eraser')}>🧽 Eraser</button>
+          <button className="tool-btn" onClick={clearCanvas}>🗑️ Clear</button>
+        </div>
       </div>
       <div className="drawing-canvas-wrapper">
         <canvas

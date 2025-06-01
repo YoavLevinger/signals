@@ -251,17 +251,19 @@ function GuidedDrawing() {
         <div className="guided-sidebar left">
           <div className="sidebar-section">
             <div className="sidebar-header">Family</div>
-            {familyFigures.map((item) => (
-              <div
-                key={item.name}
-                className="sidebar-draggable"
-                draggable
-                onDragStart={() => handleDragStart(item)}
-                onDragEnd={handleDragEnd}
-              >
-                <span className="sidebar-icon">{item.icon}</span> {item.name}
-              </div>
-            ))}
+            <div className="sidebar-list">
+              {familyFigures.map((item) => (
+                <div
+                  key={item.name}
+                  className="sidebar-draggable"
+                  draggable
+                  onDragStart={() => handleDragStart(item)}
+                  onDragEnd={handleDragEnd}
+                >
+                  <span className="sidebar-icon">{item.icon}</span> {item.name}
+                </div>
+              ))}
+            </div>
           </div>
           <div className="sidebar-section">
             <div className="sidebar-header">Body Parts</div>
@@ -293,12 +295,14 @@ function GuidedDrawing() {
                 />
               ))}
             </div>
-            <button className={`tool-btn${tool === 'brush' ? ' selected' : ''}`} onClick={() => setTool('brush')}>🖌️ Brush</button>
-            <button className={`tool-btn${tool === 'eraser' ? ' selected' : ''}`} onClick={() => setTool('eraser')}>🧽 Eraser</button>
-            <button className={`tool-btn${tool === 'hand' ? ' selected' : ''}`} onClick={() => setTool('hand')}>🤚 Hand</button>
-            <button className="tool-btn" onClick={clearCanvas}>🗑️ Clear</button>
-            <button className="tool-btn" onClick={handleUndo} disabled={undoStack.length === 0}>↩️ Undo</button>
-            <button className="tool-btn" onClick={handleRedo} disabled={redoStack.length === 0}>↪️ Redo</button>
+            <div className="tool-buttons">
+              <button className={`tool-btn${tool === 'brush' ? ' selected' : ''}`} onClick={() => setTool('brush')}>🖌️ Brush</button>
+              <button className={`tool-btn${tool === 'eraser' ? ' selected' : ''}`} onClick={() => setTool('eraser')}>🧽 Eraser</button>
+              <button className={`tool-btn${tool === 'hand' ? ' selected' : ''}`} onClick={() => setTool('hand')}>🤚 Hand</button>
+              <button className="tool-btn" onClick={clearCanvas}>🗑️ Clear</button>
+              <button className="tool-btn" onClick={handleUndo} disabled={undoStack.length === 0}>↩️ Undo</button>
+              <button className="tool-btn" onClick={handleRedo} disabled={redoStack.length === 0}>↪️ Redo</button>
+            </div>
           </div>
           <div className="drawing-canvas-wrapper">
             <canvas

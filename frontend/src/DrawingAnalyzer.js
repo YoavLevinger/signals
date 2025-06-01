@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import config from './config';
 
 const questionGroups = [
   {
@@ -94,9 +95,21 @@ function DrawingAnalyzer() {
   const [error, setError] = React.useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-    setResult(null);
-    setError(null);
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setResult(null);
+      setError(null);
+    }
+  };
+
+  const handleCameraCapture = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setResult(null);
+      setError(null);
+    }
   };
 
   const handleCheckboxChange = (idx) => {
@@ -122,8 +135,7 @@ function DrawingAnalyzer() {
       const formData = new FormData();
       formData.append('image', file);
       formData.append('question', 'Analyze this drawing.');
-      // const response = await fetch('http://127.0.0.1:4001/ask', {
-      const response = await fetch('http://localhost:4001/ask', {
+      const response = await fetch(`${config.backendHost}/ask`, {
         method: 'POST',
         body: formData,
         signal: controller.signal,
@@ -157,8 +169,18 @@ function DrawingAnalyzer() {
       <h2>Drawing Analyzer</h2>
       <form onSubmit={handleSubmit} className="analyzer-form">
         <div className="upload-section">
-          <label htmlFor="file-upload" className="upload-label">Upload Image:</label>
-          <input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
+          <div className="upload-options">
+            <label htmlFor="file-upload" className="upload-label">Upload Image:</label>
+            <input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
+            <label htmlFor="camera-capture" className="upload-label">Take Photo:</label>
+            <input 
+              id="camera-capture" 
+              type="file" 
+              accept="image/*" 
+              capture="environment" 
+              onChange={handleCameraCapture}
+            />
+          </div>
           {file && <div className="file-name">Selected: {file.name}</div>}
         </div>
         <div className="analyzer-subheader">Instructions: Review the drawing and check all that apply. Multiple selections are allowed.</div>
@@ -175,7 +197,7 @@ function DrawingAnalyzer() {
                       checked={answers[idx]}
                       onChange={() => handleCheckboxChange(idx)}
                     />
-                    {q.text}
+                    <span className="question-text">{q.text}</span>
                     <span className="tooltip-container">
                       <span className="tooltip-icon">?</span>
                       <span className="tooltip-text">{q.tip}</span>
@@ -186,7 +208,9 @@ function DrawingAnalyzer() {
             </div>
           ))}
         </div>
-        <button type="submit" className="send-btn" disabled={loading}>Send</button>
+        <button type="submit" className="send-btn" disabled={loading}>
+          {loading ? 'Analyzing...' : 'Analyze Drawing'}
+        </button>
       </form>
       {loading && <div className="analyzer-loading">Analyzing image, please wait...</div>}
       {error && <div className="analyzer-error">{error}</div>}
