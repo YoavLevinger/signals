@@ -1,5 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import ReactMarkdown from 'react-markdown';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import './App.css';
 import config from './config';
 
@@ -17,6 +20,7 @@ function DrawingAnalyzer() {
   const [result, setResult] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
+  const resultRef = React.useRef(null);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -82,6 +86,54 @@ function DrawingAnalyzer() {
     }
   };
 
+  const handleDownloadPDF = async () => {
+    if (!resultRef.current) return;
+    // Save original style
+    const originalStyle = resultRef.current.getAttribute('style') || '';
+    // Expand the section to show all content
+    resultRef.current.style.maxHeight = 'none';
+    resultRef.current.style.overflow = 'visible';
+    resultRef.current.style.height = 'auto';
+    // Wait for the browser to render the new style
+    await new Promise(r => setTimeout(r, 100));
+    const canvas = await html2canvas(resultRef.current, { useCORS: true, scale: 2 });
+    // Restore original style
+    resultRef.current.setAttribute('style', originalStyle);
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF({ orientation: 'p', unit: 'pt', format: 'a4' });
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const imgWidth = pageWidth - 40;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    let position = 20;
+    let remainingHeight = imgHeight;
+    let pageNum = 0;
+    while (remainingHeight > 0) {
+      const pageCanvas = document.createElement('canvas');
+      pageCanvas.width = canvas.width;
+      pageCanvas.height = Math.min(canvas.height, Math.round((pageHeight - 40) * canvas.width / imgWidth));
+      const ctx = pageCanvas.getContext('2d');
+      ctx.drawImage(
+        canvas,
+        0,
+        pageNum * pageCanvas.height,
+        canvas.width,
+        pageCanvas.height,
+        0,
+        0,
+        canvas.width,
+        pageCanvas.height
+      );
+      const pageImgData = pageCanvas.toDataURL('image/png');
+      if (pageNum > 0) pdf.addPage();
+      pdf.addImage(pageImgData, 'PNG', 20, 20, imgWidth, (pageCanvas.height * imgWidth) / canvas.width);
+      remainingHeight -= (pageCanvas.height * imgWidth) / canvas.width;
+      pageNum++;
+    }
+    pdf.save('drawing-analysis-result.pdf');
+  };
+
   let questionIdx = 0;
 
   return (
@@ -136,8 +188,20 @@ function DrawingAnalyzer() {
       {error && <div className="analyzer-error">{error}</div>}
       {result && (
         <div className="analyzer-result">
+          <button className="download-pdf-btn" onClick={handleDownloadPDF} style={{ float: 'right', marginBottom: 8 }}>{t('drawingAnalyzer.downloadPDF')}</button>
           <h3>{t('drawingAnalyzer.analysisResult')}</h3>
-          <div className="analyzer-result-content">{result}</div>
+          <div ref={resultRef} style={{ background: '#fff', padding: 16 }}>
+            {file && (
+              <div style={{ textAlign: 'center', marginBottom: 16 }}>
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="Uploaded"
+                  style={{ maxWidth: '300px', maxHeight: '300px', borderRadius: 8, border: '1px solid #ccc' }}
+                />
+              </div>
+            )}
+            <div className="analyzer-result-content"><ReactMarkdown>{result}</ReactMarkdown></div>
+          </div>
         </div>
       )}
     </div>
