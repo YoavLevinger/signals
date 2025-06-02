@@ -15,12 +15,25 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  padding: 0.5rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.header-content h1 {
+  font-size: 1.5rem;
+  margin: 0;
   color: white;
 }
 
@@ -45,14 +58,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 40px;
+  padding-top: 1rem;
   overflow: hidden;
 }
 
 .main-menu h1 {
   color: #2706e4;
   font-size: 3rem;
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -407,8 +420,7 @@
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  margin-bottom: 8px;
-  margin-top: 0;
+  margin: 0.5rem 0;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
 .back-btn:hover {
@@ -694,4 +706,60 @@
   .tooltip-container:active .tooltip-text {
     display: block;
   }
+}
+
+.language-selector {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.language-selector button {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+  margin: 0;
+}
+
+.language-selector button:hover {
+  background: #f0f0f0;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}
+
+[dir="rtl"] .analyzer-page {
+  max-width: 500px;
+  margin: 16px auto;
+  padding: 12px 8px;
+}
+
+[dir="rtl"] .analyzer-form {
+  padding: 0.5rem;
+  gap: 8px;
+}
+
+[dir="rtl"] .upload-section {
+  gap: 6px;
+}
+
+[dir="rtl"] .questions-section {
+  padding: 0.5rem;
+}
+
+[dir="rtl"] .question-group {
+  margin-bottom: 0.7rem;
+}
+
+[dir="rtl"] .question-item {
+  font-size: 0.95rem;
+  padding: 0.2rem;
 }

@@ -1,0 +1,213 @@
+{
+  "app": {
+    "title": "אפליקציית ניתוח ציורים",
+    "back": "חזרה ←",
+    "loading": "טוען..."
+  },
+  "navigation": {
+    "back": "חזור",
+    "home": "דף הבית"
+  },
+  "drawingAnalyzer": {
+    "title": "ניתוח ציור",
+    "uploadTitle": "העלאת ציור",
+    "uploadDescription": "העלה ציור לניתוח",
+    "cameraTitle": "צלם תמונה",
+    "cameraDescription": "צלם תמונה של ציור לניתוח",
+    "analyzeButton": "נתח ציור",
+    "uploadButton": "העלה ציור",
+    "takePhotoButton": "צלם תמונה",
+    "retakeButton": "צלם שוב",
+    "analyzing": "מנתח ציור...",
+    "error": "שגיאה בניתוח הציור",
+    "noFile": "אנא בחר קובץ או צלם תמונה",
+    "fileTooLarge": "הקובץ גדול מדי. גודל מקסימלי הוא 5MB",
+    "invalidFileType": "סוג קובץ לא תקין. אנא העלה קובץ JPG, PNG, או JPEG",
+    "selected": "נבחר",
+    "instructions": "הוראות: סקור את הציור וסמן את כל האפשרויות הרלוונטיות. ניתן לבחור מספר אפשרויות.",
+    "analyze": "ניתוח הציור",
+    "analyzingWait": "מנתח את התמונה, אנא המתן...",
+    "analysisResult": "תוצאות הניתוח",
+    "questionGroups": {
+      "humanFigure": {
+        "header": "🧍 מאפייני דמות אנושית",
+        "questions": {
+          "hands": {
+            "text": "האם הידיים חסרות, קטועות או קטנות מאוד?",
+            "tip": "מעיד על חוסר אונים, אובדן שליטה או התעללות.\n✔️ מקור: PMC9221832 - NCBI"
+          },
+          "arms": {
+            "text": "האם הידיים גדולות באופן לא פרופורציונלי או משמשות באופן תוקפני?",
+            "tip": "עשוי להעיד על חשיפה לתוקפנות פיזית או כעס מופנם.\n✔️ מקור: [Lev-Wiesel & Liraz, 2007]"
+          },
+          "neck": {
+            "text": "האם הצוואר חסר או שהראש מנותק מהגוף?",
+            "tip": "מקושר לטראומה, ניתוק או התעללות.\n✔️ מקור: Allen & Tussey, 2012; Dillenburger, 2005"
+          },
+          "legs": {
+            "text": "האם הרגליים סגורות בחוזקה או מוצלבות באופן לא טבעי?",
+            "tip": "עשוי להעיד על אי נוחות מינית, בושה או טראומה.\n✔️ מקור: Allen & Tussey, 2012; Sidun & Rosenthal, 1987"
+          },
+          "genitalia": {
+            "text": "האם יש איברי מין או רמזים לאיברי מין (למשל, הדגשה, חשיפה או פירוט)?",
+            "tip": "דגל אדום משמעותי, במיוחד אם לא נדרש או מפורט מאוד.\n✔️ מקור: Identifying Sexually Abused Children Through Art"
+          }
+        }
+      },
+      "facialFeatures": {
+        "header": "👁️ מאפייני פנים והבעות",
+        "questions": {
+          "face": {
+            "text": "האם הפנים עצובות, בוכות או חסרות עיניים או פה?",
+            "tip": "יכול להעיד על נסיגה רגשית או טראומה.\n✔️ מקור: Koppitz's Emotional Indicators"
+          },
+          "mouth": {
+            "text": "האם הפה מוצג כחתום, תפור או חסר לחלוטין?",
+            "tip": "עשוי לסמל השתקה או פחד מלדבר.\n✔️ מקור: Draw-A-Person Test interpretations"
+          },
+          "ears": {
+            "text": "האם האוזניים גדולות או מוגזמות?",
+            "tip": "יכול להעיד על ערנות מוגברת או דריכות לסכנה.\n✔️ מקור: PMC9221832 - NCBI"
+          }
+        }
+      },
+      "houseTreePerson": {
+        "header": "🏠 סמלים סביבתיים (בית-עץ-אדם)",
+        "questions": {
+          "house": {
+            "text": "האם הבית חסר דלתות או חלונות?",
+            "tip": "מתפרש לעיתים קרובות כחוסר מוצא או בידוד.\n✔️ מקור: Scott, University of Wisconsin Study"
+          },
+          "elements": {
+            "text": "האם יש אלמנטים כמו עננים כהים, גשם מוגזם או סורגים על הבית/העץ?",
+            "tip": "מסמל פחד, איום או הגבלה רגשית.\n✔️ מקור: DAP and HTP indicators"
+          },
+          "trees": {
+            "text": "האם העצים מצוירים ללא שורשים או קטנים מאוד?",
+            "tip": "עשוי להעיד על חוסר יציבות, תמיכה או זהות.\n✔️ מקור: Generating Psychological Analysis Tables"
+          }
+        }
+      },
+      "symbolic": {
+        "header": "🎨 אינדיקטורים סימבוליים ורגשיים",
+        "questions": {
+          "phallic": {
+            "text": "האם יש צורות פאליות (למשל, טריזים מוארכים, עיגולים, נשק)?",
+            "tip": "עשוי לשקף באופן לא מודע חשיפה מינית או בלבול.\n✔️ מקור: Malchiodi, 1990; Sidun & Rosenthal, 1987"
+          },
+          "colors": {
+            "text": "האם יש שימוש מוגזם בצבעים אדומים, שחורים או כהים?",
+            "tip": "נפוץ בציורים של ילדים במצוקה רגשית גבוהה.\n✔️ מקור: Frontiers in Psychology, 2020"
+          },
+          "hearts": {
+            "text": "האם יש לבבות מרובים, טריזים או אימוג'ים/סמלים עצובים?",
+            "tip": "עשוי לייצג שנאה עצמית או חיבה מעוותת.\n✔️ מקור: UW-Whitewater study"
+          },
+          "isolation": {
+            "text": "האם הציור מראה בידוד (למשל, ילד רחוק מדמויות משפחה או לבד)?",
+            "tip": "מקושר להזנחה רגשית או ניתוק.\n✔️ מקור: Draw-A-Person and HTP evaluations"
+          }
+        }
+      }
+    },
+    "cameraError": "שגיאה בגישה למצלמה"
+  },
+  "freeDrawing": {
+    "title": "ציור חופשי",
+    "brush": "מברשת",
+    "eraser": "מחק",
+    "clear": "נקה",
+    "undo": "בטל",
+    "redo": "בצע שוב"
+  },
+  "guidedDrawing": {
+    "title": "ציור מונחה",
+    "brush": "מברשת",
+    "eraser": "מחק",
+    "hand": "יד",
+    "clear": "נקה",
+    "undo": "בטל",
+    "redo": "בצע שוב",
+    "sections": {
+      "family": "משפחה",
+      "bodyParts": "איברי גוף",
+      "homeTools": "כלים ואביזרים לבית"
+    },
+    "items": {
+      "father": "אבא",
+      "mother": "אמא",
+      "brother": "אח",
+      "sister": "אחות",
+      "chair": "כיסא",
+      "table": "שולחן",
+      "lamp": "מנורה",
+      "book": "ספר",
+      "tv": "טלוויזיה",
+      "phone": "טלפון",
+      "spoon": "כף",
+      "fork": "מזלג",
+      "knife": "סכין",
+      "cup": "כוס",
+      "bed": "מיטה",
+      "shoe": "נעל",
+      "hat": "כובע",
+      "toothbrush": "מברשת שיניים",
+      "soap": "סבון",
+      "towel": "מגבת",
+      "mirror": "מראה",
+      "clock": "שעון",
+      "remote": "שלט",
+      "scissors": "מספריים",
+      "broom": "מטאטא",
+      "plant": "צמח",
+      "fridge": "מקרר",
+      "oven": "תנור",
+      "washingMachine": "מכונת כביסה",
+      "iron": "מגהץ",
+      "vacuum": "שואב אבק",
+      "fan": "מאוורר",
+      "curtain": "וילון",
+      "picture": "תמונה",
+      "head": "ראש",
+      "arm": "זרוע",
+      "leg": "רגל",
+      "hand": "יד",
+      "foot": "כף רגל",
+      "torso": "גו",
+      "eye": "עין",
+      "ear": "אוזן",
+      "mouth": "פה",
+      "nose": "אף",
+      "hair": "שיער",
+      "finger": "אצבע",
+      "toe": "בוהן",
+      "neck": "צוואר",
+      "eyebrow": "גבה",
+      "eyelash": "ריס"
+    }
+  },
+  "questioner": {
+    "title": "שאלון"
+  },
+  "picker": {
+    "title": "בורר"
+  },
+  "director": {
+    "title": "מנחה",
+    "uploadImage": "העלה תמונה",
+    "analyze": "נתח",
+    "clear": "נקה",
+    "describeImage": "תאר את התמונה",
+    "describePlaceholder": "...תאר מה אתה רואה",
+    "send": "שלח",
+    "sentMessage": "התיאור נשלח!",
+    "previousImage": "תמונה קודמת",
+    "nextImage": "תמונה הבאה"
+  },
+  "results": {
+    "title": "תוצאות הניתוח",
+    "noResults": "אין תוצאות זמינות",
+    "error": "שגיאה בטעינת תוצאות",
+    "tryAgain": "נסה שוב"
+  }
+} 

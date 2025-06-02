@@ -1,0 +1,212 @@
+{
+  "app": {
+    "title": "Drawing Analysis App",
+    "loading": "Loading...",
+    "back": "← Back"
+  },
+  "navigation": {
+    "back": "Back",
+    "home": "Home"
+  },
+  "drawingAnalyzer": {
+    "title": "Drawing Analysis",
+    "uploadTitle": "Upload Drawing",
+    "uploadDescription": "Upload a drawing to analyze",
+    "cameraTitle": "Take Photo",
+    "cameraDescription": "Take a photo of a drawing to analyze",
+    "analyzeButton": "Analyze Drawing",
+    "uploadButton": "Upload Drawing",
+    "takePhotoButton": "Take Photo",
+    "retakeButton": "Retake Photo",
+    "analyzing": "Analyzing drawing...",
+    "error": "Error analyzing drawing",
+    "noFile": "Please select a file or take a photo",
+    "fileTooLarge": "File is too large. Maximum size is 5MB",
+    "invalidFileType": "Invalid file type. Please upload a JPG, PNG, or JPEG file",
+    "selected": "Selected",
+    "instructions": "Instructions: Review the drawing and check all that apply. Multiple selections are allowed.",
+    "analyzingWait": "Analyzing image, please wait...",
+    "analysisResult": "Analysis Result",
+    "questionGroups": {
+      "humanFigure": {
+        "header": "🧍 Human Figure Characteristics",
+        "questions": {
+          "hands": {
+            "text": "Are the hands missing, cut off, or extremely small?",
+            "tip": "Potential indicator of helplessness, loss of agency, or abuse.\n✔️ Reference: PMC9221832 - NCBI"
+          },
+          "arms": {
+            "text": "Are the arms disproportionately large or used aggressively?",
+            "tip": "May indicate exposure to physical aggression or internalized anger.\n✔️ Reference: [Lev-Wiesel & Liraz, 2007]"
+          },
+          "neck": {
+            "text": "Is the neck missing or the head detached from the body?",
+            "tip": "Associated with trauma, disassociation, or abuse.\n✔️ Reference: Allen & Tussey, 2012; Dillenburger, 2005"
+          },
+          "legs": {
+            "text": "Are the legs tightly closed or crossed unnaturally?",
+            "tip": "May reflect sexual discomfort, shame, or trauma.\n✔️ Reference: Allen & Tussey, 2012; Sidun & Rosenthal, 1987"
+          },
+          "genitalia": {
+            "text": "Is there genitalia depicted or suggested (e.g., emphasis, exposure, or detail)?",
+            "tip": "A significant red flag, especially if unsolicited or highly detailed.\n✔️ Reference: Identifying Sexually Abused Children Through Art"
+          }
+        }
+      },
+      "facialFeatures": {
+        "header": "👁️ Facial Features and Expression",
+        "questions": {
+          "face": {
+            "text": "Is the face sad, crying, or lacks eyes or mouth?",
+            "tip": "Can suggest emotional withdrawal or trauma.\n✔️ Reference: Koppitz's Emotional Indicators"
+          },
+          "mouth": {
+            "text": "Is the mouth shown sealed, sewn, or missing entirely?",
+            "tip": "May symbolize silencing or fear of speaking out.\n✔️ Reference: Draw-A-Person Test interpretations"
+          },
+          "ears": {
+            "text": "Are the ears overly large or exaggerated?",
+            "tip": "Could indicate hypervigilance or alertness to danger.\n✔️ Reference: PMC9221832 - NCBI"
+          }
+        }
+      },
+      "houseTreePerson": {
+        "header": "🏠 House-Tree-Person (HTP) and Environmental Symbols",
+        "questions": {
+          "house": {
+            "text": "Is the house missing doors or windows?",
+            "tip": "Often interpreted as a lack of escape or isolation.\n✔️ Reference: Scott, University of Wisconsin Study"
+          },
+          "elements": {
+            "text": "Are there elements like dark clouds, excessive rain, or bars on the house/tree?",
+            "tip": "Symbolize fear, threat, or emotional confinement.\n✔️ Reference: DAP and HTP indicators"
+          },
+          "trees": {
+            "text": "Are trees drawn without roots or very small in size?",
+            "tip": "Might indicate a lack of grounding, support, or identity.\n✔️ Reference: Generating Psychological Analysis Tables"
+          }
+        }
+      },
+      "symbolic": {
+        "header": "🎨 Symbolic and Emotional Indicators",
+        "questions": {
+          "phallic": {
+            "text": "Are there phallic shapes (e.g., elongated wedges, circles, weapons)?",
+            "tip": "May unconsciously reflect sexual exposure or confusion.\n✔️ Reference: Malchiodi, 1990; Sidun & Rosenthal, 1987"
+          },
+          "colors": {
+            "text": "Is there excessive use of red, black, or dark colors?",
+            "tip": "Common in drawings of children with high emotional distress.\n✔️ Reference: Frontiers in Psychology, 2020"
+          },
+          "hearts": {
+            "text": "Are there multiple hearts, wedges, or sad emojis/emoticons?",
+            "tip": "May represent self-loathing or distorted affection.\n✔️ Reference: UW-Whitewater study"
+          },
+          "isolation": {
+            "text": "Does the drawing show isolation (e.g., child far from family figures or alone)?",
+            "tip": "Associated with emotional neglect or detachment.\n✔️ Reference: Draw-A-Person and HTP evaluations"
+          }
+        }
+      }
+    },
+    "cameraError": "Error accessing camera"
+  },
+  "freeDrawing": {
+    "title": "Free Drawing",
+    "brush": "🖌️ Brush",
+    "eraser": "🧽 Eraser",
+    "clear": "🗑️ Clear",
+    "undo": "↩️ Undo",
+    "redo": "↪️ Redo"
+  },
+  "guidedDrawing": {
+    "title": "Guided Drawing",
+    "brush": "🖌️ Brush",
+    "eraser": "🧽 Eraser",
+    "hand": "🤚 Hand",
+    "clear": "🗑️ Clear",
+    "undo": "↩️ Undo",
+    "redo": "↪️ Redo",
+    "sections": {
+      "family": "Family",
+      "bodyParts": "Body Parts",
+      "homeTools": "Home Tools & Accessories"
+    },
+    "items": {
+      "father": "Father",
+      "mother": "Mother",
+      "brother": "Brother",
+      "sister": "Sister",
+      "chair": "Chair",
+      "table": "Table",
+      "lamp": "Lamp",
+      "book": "Book",
+      "tv": "TV",
+      "phone": "Phone",
+      "spoon": "Spoon",
+      "fork": "Fork",
+      "knife": "Knife",
+      "cup": "Cup",
+      "bed": "Bed",
+      "shoe": "Shoe",
+      "hat": "Hat",
+      "toothbrush": "Toothbrush",
+      "soap": "Soap",
+      "towel": "Towel",
+      "mirror": "Mirror",
+      "clock": "Clock",
+      "remote": "Remote",
+      "scissors": "Scissors",
+      "broom": "Broom",
+      "plant": "Plant",
+      "fridge": "Fridge",
+      "oven": "Oven",
+      "washingMachine": "Washing Machine",
+      "iron": "Iron",
+      "vacuum": "Vacuum",
+      "fan": "Fan",
+      "curtain": "Curtain",
+      "picture": "Picture",
+      "head": "Head",
+      "arm": "Arm",
+      "leg": "Leg",
+      "hand": "Hand",
+      "foot": "Foot",
+      "torso": "Torso",
+      "eye": "Eye",
+      "ear": "Ear",
+      "mouth": "Mouth",
+      "nose": "Nose",
+      "hair": "Hair",
+      "finger": "Finger",
+      "toe": "Toe",
+      "neck": "Neck",
+      "eyebrow": "Eyebrow",
+      "eyelash": "Eyelash"
+    }
+  },
+  "questioner": {
+    "title": "Questioner"
+  },
+  "picker": {
+    "title": "Picker"
+  },
+  "director": {
+    "title": "Director",
+    "uploadImage": "Upload Image",
+    "analyze": "Analyze",
+    "clear": "Clear",
+    "describeImage": "Describe the Image",
+    "describePlaceholder": "Describe what you see...",
+    "send": "Send",
+    "sentMessage": "Description sent!",
+    "previousImage": "Previous Image",
+    "nextImage": "Next Image"
+  },
+  "results": {
+    "title": "Analysis Results",
+    "noResults": "No results available",
+    "error": "Error loading results",
+    "tryAgain": "Try Again"
+  }
+} 

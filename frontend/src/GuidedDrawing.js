@@ -1,66 +1,68 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import './App.css';
 
 const familyFigures = [
-  { name: 'Father', icon: '👨' },
-  { name: 'Mother', icon: '👩' },
-  { name: 'Brother', icon: '👦' },
-  { name: 'Sister', icon: '👧' },
+  { name: 'father', icon: '👨' },
+  { name: 'mother', icon: '👩' },
+  { name: 'brother', icon: '👦' },
+  { name: 'sister', icon: '👧' },
 ];
 
 const homeTools = [
-  { name: 'Chair', icon: '🪑' },
-  { name: 'Table', icon: '🛋️' },
-  { name: 'Lamp', icon: '💡' },
-  { name: 'Book', icon: '📚' },
-  { name: 'TV', icon: '📺' },
-  { name: 'Phone', icon: '📱' },
-  { name: 'Spoon', icon: '🥄' },
-  { name: 'Fork', icon: '🍴' },
-  { name: 'Knife', icon: '🔪' },
-  { name: 'Cup', icon: '☕' },
-  { name: 'Bed', icon: '🛏️' },
-  { name: 'Shoe', icon: '👟' },
-  { name: 'Hat', icon: '🎩' },
-  { name: 'Toothbrush', icon: '🪥' },
-  { name: 'Soap', icon: '🧼' },
-  { name: 'Towel', icon: '🧻' },
-  { name: 'Mirror', icon: '🪞' },
-  { name: 'Clock', icon: '⏰' },
-  { name: 'Remote', icon: '🕹️' },
-  { name: 'Scissors', icon: '✂️' },
-  { name: 'Broom', icon: '🧹' },
-  { name: 'Plant', icon: '🪴' },
-  { name: 'Fridge', icon: '🧊' },
-  { name: 'Oven', icon: '🍳' },
-  { name: 'Washing Machine', icon: '🧺' },
-  { name: 'Iron', icon: '🧲' },
-  { name: 'Vacuum', icon: '🧹' },
-  { name: 'Fan', icon: '🌀' },
-  { name: 'Curtain', icon: '🪟' },
-  { name: 'Picture', icon: '🖼️' },
+  { name: 'chair', icon: '🪑' },
+  { name: 'table', icon: '🛋️' },
+  { name: 'lamp', icon: '💡' },
+  { name: 'book', icon: '📚' },
+  { name: 'tv', icon: '📺' },
+  { name: 'phone', icon: '📱' },
+  { name: 'spoon', icon: '🥄' },
+  { name: 'fork', icon: '🍴' },
+  { name: 'knife', icon: '🔪' },
+  { name: 'cup', icon: '☕' },
+  { name: 'bed', icon: '🛏️' },
+  { name: 'shoe', icon: '👟' },
+  { name: 'hat', icon: '🎩' },
+  { name: 'toothbrush', icon: '🪥' },
+  { name: 'soap', icon: '🧼' },
+  { name: 'towel', icon: '🧻' },
+  { name: 'mirror', icon: '🪞' },
+  { name: 'clock', icon: '⏰' },
+  { name: 'remote', icon: '🕹️' },
+  { name: 'scissors', icon: '✂️' },
+  { name: 'broom', icon: '🧹' },
+  { name: 'plant', icon: '🪴' },
+  { name: 'fridge', icon: '🧊' },
+  { name: 'oven', icon: '🍳' },
+  { name: 'washingMachine', icon: '🧺' },
+  { name: 'iron', icon: '🧲' },
+  { name: 'vacuum', icon: '🧹' },
+  { name: 'fan', icon: '🌀' },
+  { name: 'curtain', icon: '🪟' },
+  { name: 'picture', icon: '🖼️' },
 ];
 
 const bodyParts = [
-  { name: 'Head', icon: '🟤' },
-  { name: 'Arm', icon: '💪' },
-  { name: 'Leg', icon: '🦵' },
-  { name: 'Hand', icon: '🤚' },
-  { name: 'Foot', icon: '🦶' },
-  { name: 'Torso', icon: '🟦' },
-  { name: 'Eye', icon: '👁️' },
-  { name: 'Ear', icon: '👂' },
-  { name: 'Mouth', icon: '👄' },
-  { name: 'Nose', icon: '👃' },
-  { name: 'Hair', icon: '🦱' },
-  { name: 'Finger', icon: '☝️' },
-  { name: 'Toe', icon: '🦶' },
-  { name: 'Neck', icon: '🦴' },
-  { name: 'Eyebrow', icon: '〰️' },
-  { name: 'Eyelash', icon: '〰️' },
+  { name: 'head', icon: '🟤' },
+  { name: 'arm', icon: '💪' },
+  { name: 'leg', icon: '🦵' },
+  { name: 'hand', icon: '🤚' },
+  { name: 'foot', icon: '🦶' },
+  { name: 'torso', icon: '🟦' },
+  { name: 'eye', icon: '👁️' },
+  { name: 'ear', icon: '👂' },
+  { name: 'mouth', icon: '👄' },
+  { name: 'nose', icon: '👃' },
+  { name: 'hair', icon: '🦱' },
+  { name: 'finger', icon: '☝️' },
+  { name: 'toe', icon: '🦶' },
+  { name: 'neck', icon: '🦴' },
+  { name: 'eyebrow', icon: '〰️' },
+  { name: 'eyelash', icon: '〰️' },
 ];
 
 function GuidedDrawing() {
+  const { t } = useTranslation();
   const canvasRef = useRef(null);
   const [drawing, setDrawing] = useState(false);
   const [color, setColor] = useState('#222');
@@ -250,9 +252,9 @@ function GuidedDrawing() {
       <div className="guided-layout">
         <div className="guided-sidebar left">
           <div className="sidebar-section">
-            <div className="sidebar-header">Family</div>
+            <div className="sidebar-header">{t('guidedDrawing.sections.homeTools')}</div>
             <div className="sidebar-list">
-              {familyFigures.map((item) => (
+              {homeTools.map((item) => (
                 <div
                   key={item.name}
                   className="sidebar-draggable"
@@ -260,23 +262,7 @@ function GuidedDrawing() {
                   onDragStart={() => handleDragStart(item)}
                   onDragEnd={handleDragEnd}
                 >
-                  <span className="sidebar-icon">{item.icon}</span> {item.name}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="sidebar-section">
-            <div className="sidebar-header">Body Parts</div>
-            <div className="sidebar-list">
-              {bodyParts.map((item) => (
-                <div
-                  key={item.name}
-                  className="sidebar-draggable"
-                  draggable
-                  onDragStart={() => handleDragStart(item)}
-                  onDragEnd={handleDragEnd}
-                >
-                  <span className="sidebar-icon">{item.icon}</span> {item.name}
+                  <span className="sidebar-icon">{item.icon}</span> {t(`guidedDrawing.items.${item.name}`)}
                 </div>
               ))}
             </div>
@@ -324,9 +310,9 @@ function GuidedDrawing() {
         </div>
         <div className="guided-sidebar right">
           <div className="sidebar-section">
-            <div className="sidebar-header">Home Tools & Accessories</div>
+            <div className="sidebar-header">{t('guidedDrawing.sections.family')}</div>
             <div className="sidebar-list">
-              {homeTools.map((item) => (
+              {familyFigures.map((item) => (
                 <div
                   key={item.name}
                   className="sidebar-draggable"
@@ -334,7 +320,23 @@ function GuidedDrawing() {
                   onDragStart={() => handleDragStart(item)}
                   onDragEnd={handleDragEnd}
                 >
-                  <span className="sidebar-icon">{item.icon}</span> {item.name}
+                  <span className="sidebar-icon">{item.icon}</span> {t(`guidedDrawing.items.${item.name}`)}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="sidebar-section">
+            <div className="sidebar-header">{t('guidedDrawing.sections.bodyParts')}</div>
+            <div className="sidebar-list">
+              {bodyParts.map((item) => (
+                <div
+                  key={item.name}
+                  className="sidebar-draggable"
+                  draggable
+                  onDragStart={() => handleDragStart(item)}
+                  onDragEnd={handleDragEnd}
+                >
+                  <span className="sidebar-icon">{item.icon}</span> {t(`guidedDrawing.items.${item.name}`)}
                 </div>
               ))}
             </div>

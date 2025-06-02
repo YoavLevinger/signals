@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './App.css';
 
 const IMAGE_COUNT = 12; // Change this to the number of images you have
 
-function BackButton() {
-  const navigate = useNavigate();
-  return <button className="back-btn" onClick={() => navigate('/')}>← Back</button>;
-}
-
 function Animate() {
+  const { t } = useTranslation();
   const [index, setIndex] = useState(1);
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
@@ -25,15 +21,13 @@ function Animate() {
     setMessage('');
   };
   const handleSend = async () => {
-    // Replace with actual backend call
-    setMessage('Description sent!');
+    setMessage(t('director.sentMessage'));
     // await fetch('/api/director', { method: 'POST', body: JSON.stringify({ image: index, description }) });
   };
 
   return (
     <div className="animate-page">
-      <BackButton />
-      <h2>Describe the Image</h2>
+      <h2>{t('director.describeImage')}</h2>
       <div className="animate-img-wrapper">
         <img
           src={`/director/${index}.png`}
@@ -45,17 +39,17 @@ function Animate() {
       <div className="animate-form">
         <textarea
           className="animate-input"
-          placeholder="Describe what you see..."
+          placeholder={t('director.describePlaceholder')}
           value={description}
           onChange={e => setDescription(e.target.value)}
           rows={3}
         />
-        <button className="send-btn" onClick={handleSend} disabled={!description.trim()}>Send</button>
+        <button className="send-btn" onClick={handleSend} disabled={!description.trim()}>{t('director.send')}</button>
         {message && <div className="animate-message">{message}</div>}
       </div>
       <div className="animate-nav">
-        <button className="tool-btn" onClick={handleBack} disabled={index === 1}>Previous Image</button>
-        <button className="tool-btn" onClick={handleNext} disabled={index === IMAGE_COUNT}>Next Image</button>
+        <button className="tool-btn" onClick={handleBack} disabled={index === 1}>{t('director.previousImage')}</button>
+        <button className="tool-btn" onClick={handleNext} disabled={index === IMAGE_COUNT}>{t('director.nextImage')}</button>
       </div>
     </div>
   );
