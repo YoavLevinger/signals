@@ -6,6 +6,7 @@ from PIL import Image
 import base64
 from io import BytesIO
 import time
+import os
 
 app = FastAPI()
 
@@ -19,6 +20,11 @@ app.add_middleware(
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL_NAME = "llama3.2-vision"
+PROMPT_FILE = os.path.join(os.path.dirname(__file__), 'prompt.txt')
+
+def load_prompt():
+    with open(PROMPT_FILE, 'r', encoding='utf-8') as f:
+        return f.read()
 
 def encode_image(file: UploadFile) -> str:
     image = Image.open(file.file)
@@ -30,11 +36,12 @@ def encode_image(file: UploadFile) -> str:
 async def ask_image_question(image: UploadFile = File(...), question: str = Form(...)):
     try:
         b64_image = encode_image(image)
+        prompt_text = load_prompt()
         response = requests.post(
             OLLAMA_URL,
             json={
                 "model": MODEL_NAME,
-                "prompt": "Evaluate each of the following indicators below independently: Are the hands missing, cut off, or extremely small? Are the arms disproportionately large or used aggressively? Is the neck missing or is the head detached from the body? Are the legs tightly closed or crossed unnaturally? Is there genitalia depicted or suggested (e.g., emphasis, exposure, or detail)? Is the face sad, crying, or lacking eyes or a mouth? Is the mouth shown sealed, sewn, or missing entirely? Are the ears overly large or exaggerated? Is the house missing doors or windows? Are there elements like dark clouds, excessive rain, or bars on the house/tree? Are trees drawn without roots or very small in size? Are there phallic shapes (e.g., elongated wedges, circles, weapons)? Is there excessive use of red, black, or dark colors? Are there multiple hearts, wedges, or sad emojis/emoticons? Does the drawing show isolation (e.g., child far from family figures or alone)? For each item, respond YES / NO / UNCLEAR",
+                "prompt": prompt_text,
                 # question,
                 "images": [b64_image],
                 "stream": False
