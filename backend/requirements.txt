@@ -1,0 +1,7 @@
+# Windows compatible versions - USE PYTHON 3.11!
+fastapi
+uvicorn
+pillow
+requests
+python-multipart
+

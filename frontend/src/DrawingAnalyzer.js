@@ -31,15 +31,6 @@ function DrawingAnalyzer() {
     }
   };
 
-  const handleCameraCapture = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      setFile(selectedFile);
-      setResult(null);
-      setError(null);
-    }
-  };
-
   const handleCheckboxChange = (idx) => {
     setAnswers((prev) => {
       const updated = [...prev];
@@ -69,8 +60,7 @@ function DrawingAnalyzer() {
         signal: controller.signal,
       });
       clearTimeout(timeoutId);
-      if (response.error) {
-        const text = await response.text();
+      if (!response.ok) {
         throw new Error('Server error');
       }
       const data = await response.json();
@@ -99,14 +89,12 @@ function DrawingAnalyzer() {
     const canvas = await html2canvas(resultRef.current, { useCORS: true, scale: 2 });
     // Restore original style
     resultRef.current.setAttribute('style', originalStyle);
-    const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({ orientation: 'p', unit: 'pt', format: 'a4' });
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
     const imgWidth = pageWidth - 40;
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-    let position = 20;
     let remainingHeight = imgHeight;
     let pageNum = 0;
     while (remainingHeight > 0) {
@@ -143,14 +131,12 @@ function DrawingAnalyzer() {
         <div className="upload-section">
           <div className="upload-options">
             <label htmlFor="file-upload" className="upload-label">{t('drawingAnalyzer.uploadTitle')}</label>
-            <input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
-            <label htmlFor="camera-capture" className="upload-label">{t('drawingAnalyzer.cameraTitle')}</label>
             <input 
-              id="camera-capture" 
+              id="file-upload" 
               type="file" 
               accept="image/*" 
               capture="environment" 
-              onChange={handleCameraCapture}
+              onChange={handleFileChange} 
             />
           </div>
           {file && <div className="file-name">{t('drawingAnalyzer.selected')}: {file.name}</div>}

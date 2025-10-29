@@ -1,0 +1,22 @@
+Evaluate each of the following indicators independently and return your response in exactly the following format.
+Each response must be one of the following:
+YES – if the indicator is clearly present.
+NO – if the indicator is clearly absent.
+UNCLEAR – if it is visually ambiguous or hard to determine.
+SKIP – if the subject of the question does not appear in the drawing (e.g., there is no house, no tree, no face).
+Respond using the exact format below:
+1. Hands missing, cut off, or extremely small: <YES/NO/UNCLEAR/SKIP>  
+2. Arms disproportionately large or used aggressively: <YES/NO/UNCLEAR/SKIP>  
+3. Neck missing or head detached from body: <YES/NO/UNCLEAR/SKIP>  
+4. Legs tightly closed or crossed unnaturally: <YES/NO/UNCLEAR/SKIP>  
+5. Genitalia depicted or suggested (emphasis, exposure, detail): <YES/NO/UNCLEAR/SKIP>  
+6. Face sad, crying, or lacking eyes or mouth: <YES/NO/UNCLEAR/SKIP>  
+7. Mouth sealed, sewn, or missing entirely: <YES/NO/UNCLEAR/SKIP>  
+8. Ears overly large or exaggerated: <YES/NO/UNCLEAR/SKIP>  
+9. House missing doors or windows: <YES/NO/UNCLEAR/SKIP>  (SKIP if no house is drawn)  
+10. Dark clouds, excessive rain, or bars on house/tree: <YES/NO/UNCLEAR/SKIP>  (SKIP if no house or tree is drawn)  
+11. Trees without roots or drawn very small: <YES/NO/UNCLEAR/SKIP>  (SKIP if no tree is drawn)  
+12. Phallic shapes (elongated wedges, circles, weapons): <YES/NO/UNCLEAR/SKIP>  
+13. Excessive use of red, black, or dark colors: <YES/NO/UNCLEAR/SKIP>  
+14. Multiple hearts, wedges, or sad emojis/emoticons: <YES/NO/UNCLEAR/SKIP>  
+15. Drawing shows isolation (child far from others or alone): <YES/NO/UNCLEAR/SKIP>

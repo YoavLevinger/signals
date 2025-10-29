@@ -1,22 +1,28 @@
-Evaluate each of the following indicators independently and return your response in exactly the following format.
-Each response must be one of the following:
-YES – if the indicator is clearly present.
-NO – if the indicator is clearly absent.
-UNCLEAR – if it is visually ambiguous or hard to determine.
-SKIP – if the subject of the question does not appear in the drawing (e.g., there is no house, no tree, no face).
-Respond using the exact format below:
-1. Hands missing, cut off, or extremely small: <YES/NO/UNCLEAR/SKIP>  
-2. Arms disproportionately large or used aggressively: <YES/NO/UNCLEAR/SKIP>  
-3. Neck missing or head detached from body: <YES/NO/UNCLEAR/SKIP>  
-4. Legs tightly closed or crossed unnaturally: <YES/NO/UNCLEAR/SKIP>  
-5. Genitalia depicted or suggested (emphasis, exposure, detail): <YES/NO/UNCLEAR/SKIP>  
-6. Face sad, crying, or lacking eyes or mouth: <YES/NO/UNCLEAR/SKIP>  
-7. Mouth sealed, sewn, or missing entirely: <YES/NO/UNCLEAR/SKIP>  
-8. Ears overly large or exaggerated: <YES/NO/UNCLEAR/SKIP>  
-9. House missing doors or windows: <YES/NO/UNCLEAR/SKIP>  (SKIP if no house is drawn)  
-10. Dark clouds, excessive rain, or bars on house/tree: <YES/NO/UNCLEAR/SKIP>  (SKIP if no house or tree is drawn)  
-11. Trees without roots or drawn very small: <YES/NO/UNCLEAR/SKIP>  (SKIP if no tree is drawn)  
-12. Phallic shapes (elongated wedges, circles, weapons): <YES/NO/UNCLEAR/SKIP>  
-13. Excessive use of red, black, or dark colors: <YES/NO/UNCLEAR/SKIP>  
-14. Multiple hearts, wedges, or sad emojis/emoticons: <YES/NO/UNCLEAR/SKIP>  
-15. Drawing shows isolation (child far from others or alone): <YES/NO/UNCLEAR/SKIP>
+Your task is to **visually examine the drawing** and **evaluate each indicator independently**.
+Base your judgment solely on **visual evidence** (composition, color, proportion, and expression).
+Do not speculate about emotion or intent — evaluate what is *seen*.
+
+For each indicator, respond with **exactly one** of the following options:
+
+* **YES** – the indicator is clearly and visually present.
+* **NO** – the indicator is clearly and visually absent.
+* **UNCLEAR** – the visual evidence is ambiguous or partially present.
+* **SKIP** – the element does not appear in the drawing (e.g., there is no house, tree, or person).
+
+Respond in **exactly this numbered format**, one per line:
+
+1. Hands missing, cut off, or extremely small (look for incomplete limbs, tiny hands, or unnatural truncation): <YES/NO/UNCLEAR/SKIP>  
+2. Arms disproportionately large or drawn in an aggressive pose (raised fists, weapons, tension): <YES/NO/UNCLEAR/SKIP>  
+3. Neck missing or head detached from body (floating or disconnected head): <YES/NO/UNCLEAR/SKIP>  
+4. Legs tightly closed or crossed in an unnatural, stiff, or defensive way: <YES/NO/UNCLEAR/SKIP>  
+5. Genitalia explicitly shown, emphasized, or symbolically suggested (focus, shading, or detail): <YES/NO/UNCLEAR/SKIP>  
+6. Face sad, crying, or missing key features (no eyes/mouth or downturned features): <YES/NO/UNCLEAR/SKIP>  
+7. Mouth sealed, sewn, or missing entirely (no visible line or intentionally crossed/covered): <YES/NO/UNCLEAR/SKIP>  
+8. Ears exaggerated, abnormally large, or emphasized: <YES/NO/UNCLEAR/SKIP>  
+9. House missing doors or windows (incomplete or closed structure): <YES/NO/UNCLEAR/SKIP>  
+10. Dark clouds, heavy rain, or bars on house/tree suggesting confinement or sadness: <YES/NO/UNCLEAR/SKIP>  
+11. Trees without roots or drawn abnormally small/weak compared to other elements: <YES/NO/UNCLEAR/SKIP>  
+12. Phallic or sexually suggestive shapes (elongated wedges, cylindrical objects, or pointed weapons): <YES/NO/UNCLEAR/SKIP>  
+13. Excessive dominance of dark tones (red, black, or brown covering large areas): <YES/NO/UNCLEAR/SKIP>  
+14. Repetitive emotional symbols (multiple hearts, tears, sad faces, emojis): <YES/NO/UNCLEAR/SKIP>  
+15. Isolation theme (single person alone, separated, or distant from others/objects): <YES/NO/UNCLEAR/SKIP>  

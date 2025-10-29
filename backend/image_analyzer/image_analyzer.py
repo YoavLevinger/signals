@@ -26,6 +26,10 @@ def load_prompt():
     with open(PROMPT_FILE, 'r', encoding='utf-8') as f:
         return f.read()
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
+
 def encode_image(file: UploadFile) -> str:
     image = Image.open(file.file)
     buffered = BytesIO()
