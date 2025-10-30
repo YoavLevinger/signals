@@ -8,10 +8,10 @@ import GuidedDrawing from './GuidedDrawing';
 import Animate from './Animate';
 import './i18n';
 
-function LanguageSelector() {
+const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();
 
-  const changeLanguage = (e) => {
+  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const lng = e.target.value;
     i18n.changeLanguage(lng);
     document.documentElement.dir = lng === 'ar' || lng === 'he' ? 'rtl' : 'ltr';
@@ -23,18 +23,24 @@ function LanguageSelector() {
         <option value="en">English</option>
         <option value="he">עברית</option>
         <option value="ar">العربية</option>
+        <option value="ru">Русский</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+        <option value="es">Español</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="pt">Português</option>
       </select>
     </div>
   );
-}
+};
 
-function Home() {
+const Home: React.FC = () => {
   const { t } = useTranslation();
 
   return (
     <div className="main-menu">
-      {/* Decorative background elements */}
-     
       <h1>{t('app.title')}</h1>
       <div className="menu-options menu-options-grid">
         <div className="menu-row">
@@ -62,34 +68,41 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
-function BackButton() {
+const BackButton: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return <button className="back-btn" onClick={() => navigate('/')}>{t('navigation.back')}</button>;
-}
+};
 
-function DrawingAnalyzerPage() {
+const DrawingAnalyzerPage: React.FC = () => {
   return <><BackButton /><DrawingAnalyzer /></>;
-}
-function GuidedDrawingPage() {
-  return <><BackButton /><GuidedDrawing /></>;
-}
-function FreeDrawingPage() {
-  return <><BackButton /><FreeDrawing /></>;
-}
-function Questioner() { 
-  const { t } = useTranslation();
-  return <><BackButton /><div><h2>{t('questioner.title')}</h2></div></>; 
-}
-function Picker() { 
-  const { t } = useTranslation();
-  return <><BackButton /><div><h2>{t('picker.title')}</h2></div></>; 
-}
-function Director() { return <><BackButton /><Animate /></>; }
+};
 
-function App() {
+const GuidedDrawingPage: React.FC = () => {
+  return <><BackButton /><GuidedDrawing /></>;
+};
+
+const FreeDrawingPage: React.FC = () => {
+  return <><BackButton /><FreeDrawing /></>;
+};
+
+const Questioner: React.FC = () => {
+  const { t } = useTranslation();
+  return <><BackButton /><div><h2>{t('questioner.title')}</h2></div></>;
+};
+
+const Picker: React.FC = () => {
+  const { t } = useTranslation();
+  return <><BackButton /><div><h2>{t('picker.title')}</h2></div></>;
+};
+
+const Director: React.FC = () => {
+  return <><BackButton /><Animate /></>;
+};
+
+const App: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -115,6 +128,7 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
+

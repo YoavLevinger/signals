@@ -1,15 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './App.css';
+import { Figure, Tool, BodyPart, Point, Stroke, PlacedItem, DrawingTool } from './types';
 
-const familyFigures = [
+const familyFigures: Figure[] = [
   { name: 'father', icon: '👨' },
   { name: 'mother', icon: '👩' },
   { name: 'brother', icon: '👦' },
   { name: 'sister', icon: '👧' },
 ];
 
-const homeTools = [
+const homeTools: Tool[] = [
   { name: 'chair', icon: '🪑' },
   { name: 'table', icon: '🛋️' },
   { name: 'lamp', icon: '💡' },
@@ -42,7 +43,7 @@ const homeTools = [
   { name: 'picture', icon: '🖼️' },
 ];
 
-const bodyParts = [
+const bodyParts: BodyPart[] = [
   { name: 'head', icon: '🟤' },
   { name: 'arm', icon: '💪' },
   { name: 'leg', icon: '🦵' },
@@ -61,27 +62,37 @@ const bodyParts = [
   { name: 'eyelash', icon: '〰️' },
 ];
 
-function GuidedDrawing() {
+type ExtendedTool = DrawingTool | 'hand';
+
+interface UndoState {
+  placedItems: PlacedItem[];
+  strokes: Stroke[];
+}
+
+const GuidedDrawing: React.FC = () => {
   const { t } = useTranslation();
-  const canvasRef = useRef(null);
-  const [drawing, setDrawing] = useState(false);
-  const [color, setColor] = useState('#222');
-  const [tool, setTool] = useState('brush');
-  const [lastPos, setLastPos] = useState({ x: 0, y: 0 });
-  const [draggedItem, setDraggedItem] = useState(null);
-  const [placedItems, setPlacedItems] = useState([]); // {icon, x, y}
-  const [movingIdx, setMovingIdx] = useState(null);
-  const [undoStack, setUndoStack] = useState([]);
-  const [redoStack, setRedoStack] = useState([]);
-  const [strokes, setStrokes] = useState([]); // {points: [{x, y}], color, width, eraser}
-  const [currentStroke, setCurrentStroke] = useState(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [drawing, setDrawing] = useState<boolean>(false);
+  const [color, setColor] = useState<string>('#222');
+  const [tool, setTool] = useState<ExtendedTool>('brush');
+  const [draggedItem, setDraggedItem] = useState<Figure | Tool | BodyPart | null>(null);
+  const [placedItems, setPlacedItems] = useState<PlacedItem[]>([]);
+  const [movingIdx, setMovingIdx] = useState<number | null>(null);
+  const [undoStack, setUndoStack] = useState<UndoState[]>([]);
+  const [redoStack, setRedoStack] = useState<UndoState[]>([]);
+  const [strokes, setStrokes] = useState<Stroke[]>([]);
+  const [currentStroke, setCurrentStroke] = useState<Stroke | null>(null);
 
   const colors = ['#222', '#e53935', '#43a047', '#1e88e5', '#fbc02d', '#8e24aa', '#ff9800', '#00bcd4'];
 
   // Redraw everything on canvas
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Draw all strokes
     for (const stroke of strokes) {
@@ -117,21 +128,24 @@ function GuidedDrawing() {
   }, [color, tool, placedItems, strokes, currentStroke]);
 
   // Drawing logic
-  const getPos = (e) => {
-    const rect = canvasRef.current.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  const getPos = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement> | React.DragEvent<HTMLCanvasElement>): Point => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+    
+    const rect = canvas.getBoundingClientRect();
+    const clientX = 'touches' in e ? e.touches[0].clientX : 'clientX' in e ? e.clientX : 0;
+    const clientY = 'touches' in e ? e.touches[0].clientY : 'clientY' in e ? e.clientY : 0;
+    
     return {
       x: clientX - rect.left,
       y: clientY - rect.top,
     };
   };
 
-  const startDrawing = (e) => {
+  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     if (tool !== 'brush' && tool !== 'eraser') return;
     setDrawing(true);
     const pos = getPos(e);
-    setLastPos(pos);
     setCurrentStroke({
       points: [pos],
       color,
@@ -142,25 +156,16 @@ function GuidedDrawing() {
     setRedoStack([]);
   };
 
-  const draw = (e) => {
-    if (!drawing) return;
+  const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    if (!drawing || !currentStroke) return;
     const pos = getPos(e);
-    setCurrentStroke((prev) => ({ ...prev, points: [...prev.points, pos] }));
-    setLastPos(pos);
-  };
-
-  const stopDrawing = () => {
-    setDrawing(false);
-    if (currentStroke) {
-      setStrokes((prev) => [...prev, currentStroke]);
-      setCurrentStroke(null);
-    }
+    setCurrentStroke((prev) => prev ? { ...prev, points: [...prev.points, pos] } : null);
   };
 
   // Drag and drop handlers for new items
-  const handleDragStart = (item) => setDraggedItem(item);
+  const handleDragStart = (item: Figure | Tool | BodyPart) => setDraggedItem(item);
   const handleDragEnd = () => setDraggedItem(null);
-  const handleDrop = (e) => {
+  const handleDrop = (e: React.DragEvent<HTMLCanvasElement>) => {
     if (!draggedItem) return;
     const pos = getPos(e);
     setUndoStack((prev) => [...prev, { placedItems: [...placedItems], strokes: [...strokes] }]);
@@ -170,7 +175,7 @@ function GuidedDrawing() {
   };
 
   // Move placed items
-  const handleCanvasMouseDown = (e) => {
+  const handleCanvasMouseDown = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     if (tool === 'brush' || tool === 'eraser') {
       startDrawing(e);
       return;
@@ -184,7 +189,6 @@ function GuidedDrawing() {
         const dy = pos.y - item.y;
         if (Math.abs(dx) < 24 && Math.abs(dy) < 24) {
           setMovingIdx(i);
-          setLastPos(pos);
           setUndoStack((prev) => [...prev, { placedItems: [...placedItems], strokes: [...strokes] }]);
           setRedoStack([]);
           return;
@@ -193,19 +197,18 @@ function GuidedDrawing() {
     }
   };
 
-  const handleCanvasMouseMove = (e) => {
+  const handleCanvasMouseMove = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     if (drawing) {
       draw(e);
       return;
     }
-    if (movingIdx !== null) {
+    if (movingIdx !== null && movingIdx >= 0 && movingIdx < placedItems.length) {
       const pos = getPos(e);
       setPlacedItems((prev) => {
         const updated = [...prev];
         updated[movingIdx] = { ...updated[movingIdx], x: pos.x, y: pos.y };
         return updated;
       });
-      setLastPos(pos);
     }
   };
 
@@ -227,6 +230,7 @@ function GuidedDrawing() {
     setStrokes(last.strokes);
     setUndoStack((prev) => prev.slice(0, -1));
   };
+  
   const handleRedo = () => {
     if (redoStack.length === 0) return;
     const last = redoStack[redoStack.length - 1];
@@ -238,7 +242,11 @@ function GuidedDrawing() {
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setUndoStack((prev) => [...prev, { placedItems: [...placedItems], strokes: [...strokes] }]);
     setPlacedItems([]);
@@ -345,6 +353,7 @@ function GuidedDrawing() {
       </div>
     </div>
   );
-}
+};
 
-export default GuidedDrawing; 
+export default GuidedDrawing;
+

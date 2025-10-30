@@ -1,0 +1,217 @@
+{
+  "app": {
+    "title": "Zeichnungsanalyse-App",
+    "loading": "Lädt...",
+    "back": "← Zurück"
+  },
+  "navigation": {
+    "back": "Zurück",
+    "home": "Startseite"
+  },
+  "drawingAnalyzer": {
+    "title": "Zeichnungsanalyse",
+    "uploadTitle": "Zeichnung hochladen",
+    "uploadDescription": "Laden Sie eine Zeichnung zum Analysieren hoch",
+    "cameraTitle": "Foto aufnehmen",
+    "cameraDescription": "Machen Sie ein Foto einer Zeichnung zum Analysieren",
+    "analyzeButton": "Zeichnung analysieren",
+    "uploadButton": "Zeichnung hochladen",
+    "takePhotoButton": "Foto aufnehmen",
+    "retakeButton": "Foto erneut aufnehmen",
+    "analyzing": "Zeichnung wird analysiert...",
+    "error": "Fehler beim Analysieren der Zeichnung",
+    "noFile": "Bitte wählen Sie eine Datei aus oder machen Sie ein Foto",
+    "fileTooLarge": "Datei ist zu groß. Maximale Größe beträgt 5MB",
+    "invalidFileType": "Ungültiger Dateityp. Bitte laden Sie eine JPG-, PNG- oder JPEG-Datei hoch",
+    "selected": "Ausgewählt",
+    "instructions": "Anweisungen: Überprüfen Sie die Zeichnung und aktivieren Sie alle zutreffenden Optionen. Mehrfachauswahl ist möglich.",
+    "analyzingWait": "Bild wird analysiert, bitte warten...",
+    "analysisResult": "Analyseergebnis",
+    "downloadPDF": "PDF herunterladen",
+    "analyze": "Analysieren",
+    "noResults": "Keine Ergebnisse verfügbar",
+    "timeout": "Zeitüberschreitung",
+    "questionGroups": {
+      "humanFigure": {
+        "header": "🧍 Merkmale der menschlichen Figur",
+        "questions": {
+          "hands": {
+            "text": "Fehlen die Hände, sind sie abgeschnitten oder extrem klein?",
+            "tip": "Möglicher Indikator für Hilflosigkeit, Kontrollverlust oder Missbrauch.\n✔️ Referenz: PMC9221832 - NCBI"
+          },
+          "arms": {
+            "text": "Sind die Arme unverhältnismäßig groß oder aggressiv eingesetzt?",
+            "tip": "Kann auf körperliche Aggression oder internalisierten Ärger hinweisen.\n✔️ Referenz: [Lev-Wiesel & Liraz, 2007]"
+          },
+          "neck": {
+            "text": "Fehlt der Hals oder ist der Kopf vom Körper getrennt?",
+            "tip": "Wird mit Trauma, Dissoziation oder Missbrauch in Verbindung gebracht.\n✔️ Referenz: Allen & Tussey, 2012; Dillenburger, 2005"
+          },
+          "legs": {
+            "text": "Sind die Beine fest zusammengedrückt oder unnatürlich gekreuzt?",
+            "tip": "Kann sexuelles Unbehagen, Scham oder Trauma widerspiegeln.\n✔️ Referenz: Allen & Tussey, 2012; Sidun & Rosenthal, 1987"
+          },
+          "genitalia": {
+            "text": "Werden Genitalien dargestellt oder angedeutet (z.B. Betonung, Entblößung oder Details)?",
+            "tip": "Ein wichtiges Warnsignal, besonders wenn unaufgefordert oder sehr detailliert.\n✔️ Referenz: Identifying Sexually Abused Children Through Art"
+          }
+        }
+      },
+      "facialFeatures": {
+        "header": "👁️ Gesichtszüge und Ausdruck",
+        "questions": {
+          "face": {
+            "text": "Ist das Gesicht traurig, weinend oder fehlen Augen oder Mund?",
+            "tip": "Kann auf emotionalen Rückzug oder Trauma hinweisen.\n✔️ Referenz: Koppitz' emotionale Indikatoren"
+          },
+          "mouth": {
+            "text": "Ist der Mund versiegelt, zugenäht oder fehlt ganz?",
+            "tip": "Kann Stillschweigen oder Angst vor dem Aussprechen symbolisieren.\n✔️ Referenz: Draw-A-Person-Test-Interpretationen"
+          },
+          "ears": {
+            "text": "Sind die Ohren übermäßig groß oder übertrieben?",
+            "tip": "Könnte auf Hypervigilanz oder Wachsamkeit gegenüber Gefahr hinweisen.\n✔️ Referenz: PMC9221832 - NCBI"
+          }
+        }
+      },
+      "houseTreePerson": {
+        "header": "🏠 Haus-Baum-Person (HTP) und Umgebungssymbole",
+        "questions": {
+          "house": {
+            "text": "Fehlen am Haus Türen oder Fenster?",
+            "tip": "Wird oft als mangelnde Fluchtmöglichkeit oder Isolation interpretiert.\n✔️ Referenz: Scott, University of Wisconsin Studie"
+          },
+          "elements": {
+            "text": "Gibt es Elemente wie dunkle Wolken, übermäßigen Regen oder Gitter am Haus/Baum?",
+            "tip": "Symbolisieren Angst, Bedrohung oder emotionale Eingrenzung.\n✔️ Referenz: DAP und HTP Indikatoren"
+          },
+          "trees": {
+            "text": "Werden Bäume ohne Wurzeln oder sehr klein gezeichnet?",
+            "tip": "Könnte auf mangelnde Erdung, Unterstützung oder Identität hinweisen.\n✔️ Referenz: Tabellen zur psychologischen Analyse"
+          }
+        }
+      },
+      "symbolic": {
+        "header": "🎨 Symbolische und emotionale Indikatoren",
+        "questions": {
+          "phallic": {
+            "text": "Gibt es phallische Formen (z.B. längliche Keile, Kreise, Waffen)?",
+            "tip": "Kann unbewusst sexuelle Exposition oder Verwirrung widerspiegeln.\n✔️ Referenz: Malchiodi, 1990; Sidun & Rosenthal, 1987"
+          },
+          "colors": {
+            "text": "Wird übermäßig Rot, Schwarz oder dunkle Farben verwendet?",
+            "tip": "Häufig in Zeichnungen von Kindern mit hohem emotionalem Stress.\n✔️ Referenz: Frontiers in Psychology, 2020"
+          },
+          "hearts": {
+            "text": "Gibt es mehrere Herzen, Keile oder traurige Emojis/Emoticons?",
+            "tip": "Kann Selbstverachtung oder verzerrte Zuneigung darstellen.\n✔️ Referenz: UW-Whitewater Studie"
+          },
+          "isolation": {
+            "text": "Zeigt die Zeichnung Isolation (z.B. Kind weit von Familienfiguren entfernt oder allein)?",
+            "tip": "Wird mit emotionaler Vernachlässigung oder Loslösung in Verbindung gebracht.\n✔️ Referenz: Draw-A-Person und HTP Bewertungen"
+          }
+        }
+      }
+    },
+    "cameraError": "Fehler beim Zugriff auf die Kamera"
+  },
+  "freeDrawing": {
+    "title": "Freies Zeichnen",
+    "brush": "🖌️ Pinsel",
+    "eraser": "🧽 Radiergummi",
+    "clear": "🗑️ Löschen",
+    "undo": "↩️ Rückgängig",
+    "redo": "↪️ Wiederholen"
+  },
+  "guidedDrawing": {
+    "title": "Angeleitetes Zeichnen",
+    "brush": "🖌️ Pinsel",
+    "eraser": "🧽 Radiergummi",
+    "hand": "🤚 Hand",
+    "clear": "🗑️ Löschen",
+    "undo": "↩️ Rückgängig",
+    "redo": "↪️ Wiederholen",
+    "sections": {
+      "family": "Familie",
+      "bodyParts": "Körperteile",
+      "homeTools": "Haushaltswerkzeuge & Accessoires"
+    },
+    "items": {
+      "father": "Vater",
+      "mother": "Mutter",
+      "brother": "Bruder",
+      "sister": "Schwester",
+      "chair": "Stuhl",
+      "table": "Tisch",
+      "lamp": "Lampe",
+      "book": "Buch",
+      "tv": "Fernseher",
+      "phone": "Telefon",
+      "spoon": "Löffel",
+      "fork": "Gabel",
+      "knife": "Messer",
+      "cup": "Tasse",
+      "bed": "Bett",
+      "shoe": "Schuh",
+      "hat": "Hut",
+      "toothbrush": "Zahnbürste",
+      "soap": "Seife",
+      "towel": "Handtuch",
+      "mirror": "Spiegel",
+      "clock": "Uhr",
+      "remote": "Fernbedienung",
+      "scissors": "Schere",
+      "broom": "Besen",
+      "plant": "Pflanze",
+      "fridge": "Kühlschrank",
+      "oven": "Ofen",
+      "washingMachine": "Waschmaschine",
+      "iron": "Bügeleisen",
+      "vacuum": "Staubsauger",
+      "fan": "Ventilator",
+      "curtain": "Vorhang",
+      "picture": "Bild",
+      "head": "Kopf",
+      "arm": "Arm",
+      "leg": "Bein",
+      "hand": "Hand",
+      "foot": "Fuß",
+      "torso": "Rumpf",
+      "eye": "Auge",
+      "ear": "Ohr",
+      "mouth": "Mund",
+      "nose": "Nase",
+      "hair": "Haar",
+      "finger": "Finger",
+      "toe": "Zehe",
+      "neck": "Hals",
+      "eyebrow": "Augenbraue",
+      "eyelash": "Wimper"
+    }
+  },
+  "questioner": {
+    "title": "Fragebogen"
+  },
+  "picker": {
+    "title": "Auswahl"
+  },
+  "director": {
+    "title": "Direktor",
+    "uploadImage": "Bild hochladen",
+    "analyze": "Analysieren",
+    "clear": "Löschen",
+    "describeImage": "Beschreiben Sie das Bild",
+    "describePlaceholder": "Beschreiben Sie, was Sie sehen...",
+    "send": "Senden",
+    "sentMessage": "Beschreibung gesendet!",
+    "previousImage": "Vorheriges Bild",
+    "nextImage": "Nächstes Bild"
+  },
+  "results": {
+    "title": "Analyseergebnisse",
+    "noResults": "Keine Ergebnisse verfügbar",
+    "error": "Fehler beim Laden der Ergebnisse",
+    "tryAgain": "Erneut versuchen"
+  }
+}
+

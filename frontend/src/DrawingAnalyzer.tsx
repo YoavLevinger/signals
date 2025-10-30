@@ -1,29 +1,52 @@
-import React from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './App.css';
 import config from './config';
+import { QuestionGroup, ApiResponse } from './types';
 
-const questionGroupsKeys = [
+const questionGroupsKeys: QuestionGroup[] = [
   { key: 'facialFeatures', questions: ['face', 'mouth', 'ears'] },
   { key: 'humanFigure', questions: ['hands', 'arms', 'neck', 'legs', 'genitalia'] },
   { key: 'symbolic', questions: ['phallic', 'colors', 'hearts', 'isolation'] },
   { key: 'houseTreePerson', questions: ['house', 'elements', 'trees'] },
 ];
 
-function DrawingAnalyzer() {
+const DrawingAnalyzer: React.FC = () => {
   const { t } = useTranslation();
-  const [file, setFile] = React.useState(null);
-  const [answers, setAnswers] = React.useState(Array(15).fill(false));
-  const [result, setResult] = React.useState(null);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-  const resultRef = React.useRef(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [answers, setAnswers] = useState<boolean[]>(Array(15).fill(false));
+  const [result, setResult] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
+  // Create and manage object URL for preview
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    let url: string | null = null;
+    
+    // Create new URL if file exists
+    if (file) {
+      url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    } else {
+      setPreviewUrl(null);
+    }
+
+    // Cleanup: revoke URL when file changes or component unmounts
+    return () => {
+      if (url) {
+        URL.revokeObjectURL(url);
+      }
+    };
+  }, [file]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       setFile(selectedFile);
       setResult(null);
@@ -31,7 +54,7 @@ function DrawingAnalyzer() {
     }
   };
 
-  const handleCheckboxChange = (idx) => {
+  const handleCheckboxChange = (idx: number) => {
     setAnswers((prev) => {
       const updated = [...prev];
       updated[idx] = !updated[idx];
@@ -39,7 +62,7 @@ function DrawingAnalyzer() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setResult(null);
     setError(null);
@@ -63,13 +86,17 @@ function DrawingAnalyzer() {
       if (!response.ok) {
         throw new Error('Server error');
       }
-      const data = await response.json();
+      const data: ApiResponse = await response.json();
       setResult(data.response || data.error || t('drawingAnalyzer.noResults'));
     } catch (err) {
-      if (err.name === 'AbortError') {
-        setError(t('drawingAnalyzer.timeout'));
+      if (err instanceof Error) {
+        if (err.name === 'AbortError') {
+          setError(t('drawingAnalyzer.timeout'));
+        } else {
+          setError(`${t('drawingAnalyzer.error')}: ${err.message}`);
+        }
       } else {
-        setError(`${t('drawingAnalyzer.error')}: ${err.message}`);
+        setError(t('drawingAnalyzer.error'));
       }
     } finally {
       setLoading(false);
@@ -78,17 +105,23 @@ function DrawingAnalyzer() {
 
   const handleDownloadPDF = async () => {
     if (!resultRef.current) return;
+    
     // Save original style
     const originalStyle = resultRef.current.getAttribute('style') || '';
+    
     // Expand the section to show all content
     resultRef.current.style.maxHeight = 'none';
     resultRef.current.style.overflow = 'visible';
     resultRef.current.style.height = 'auto';
+    
     // Wait for the browser to render the new style
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise<void>((r) => setTimeout(r, 100));
+    
     const canvas = await html2canvas(resultRef.current, { useCORS: true, scale: 2 });
+    
     // Restore original style
     resultRef.current.setAttribute('style', originalStyle);
+    
     const pdf = new jsPDF({ orientation: 'p', unit: 'pt', format: 'a4' });
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
@@ -97,11 +130,17 @@ function DrawingAnalyzer() {
 
     let remainingHeight = imgHeight;
     let pageNum = 0;
+    
     while (remainingHeight > 0) {
       const pageCanvas = document.createElement('canvas');
       pageCanvas.width = canvas.width;
-      pageCanvas.height = Math.min(canvas.height, Math.round((pageHeight - 40) * canvas.width / imgWidth));
+      pageCanvas.height = Math.min(
+        canvas.height, 
+        Math.round((pageHeight - 40) * canvas.width / imgWidth)
+      );
       const ctx = pageCanvas.getContext('2d');
+      if (!ctx) break;
+      
       ctx.drawImage(
         canvas,
         0,
@@ -115,7 +154,14 @@ function DrawingAnalyzer() {
       );
       const pageImgData = pageCanvas.toDataURL('image/png');
       if (pageNum > 0) pdf.addPage();
-      pdf.addImage(pageImgData, 'PNG', 20, 20, imgWidth, (pageCanvas.height * imgWidth) / canvas.width);
+      pdf.addImage(
+        pageImgData, 
+        'PNG', 
+        20, 
+        20, 
+        imgWidth, 
+        (pageCanvas.height * imgWidth) / canvas.width
+      );
       remainingHeight -= (pageCanvas.height * imgWidth) / canvas.width;
       pageNum++;
     }
@@ -130,7 +176,9 @@ function DrawingAnalyzer() {
       <form onSubmit={handleSubmit} className="analyzer-form">
         <div className="upload-section">
           <div className="upload-options">
-            <label htmlFor="file-upload" className="upload-label">{t('drawingAnalyzer.uploadTitle')}</label>
+            <label htmlFor="file-upload" className="upload-label">
+              {t('drawingAnalyzer.uploadTitle')}
+            </label>
             <input 
               id="file-upload" 
               type="file" 
@@ -139,13 +187,36 @@ function DrawingAnalyzer() {
               onChange={handleFileChange} 
             />
           </div>
-          {file && <div className="file-name">{t('drawingAnalyzer.selected')}: {file.name}</div>}
+          {file && (
+            <>
+              <div className="file-name">
+                {t('drawingAnalyzer.selected')}: {file.name}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: 16, marginBottom: 16 }}>
+                {previewUrl && (
+                  <img
+                    src={previewUrl}
+                    alt="Uploaded drawing preview"
+                  style={{ 
+                    maxWidth: '100%', 
+                    maxHeight: '400px', 
+                    borderRadius: 8, 
+                    border: '1px solid #ccc',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                  }}
+                  />
+                )}
+              </div>
+            </>
+          )}
         </div>
         <div className="analyzer-subheader">{t('drawingAnalyzer.instructions')}</div>
         <div className="questions-section">
           {questionGroupsKeys.map((group, gIdx) => (
             <div key={gIdx} className="question-group">
-              <div className="question-header">{t(`drawingAnalyzer.questionGroups.${group.key}.header`)}</div>
+              <div className="question-header">
+                {t(`drawingAnalyzer.questionGroups.${group.key}.header`)}
+              </div>
               {group.questions.map((qKey, qIdx) => {
                 const idx = questionIdx++;
                 return (
@@ -155,10 +226,14 @@ function DrawingAnalyzer() {
                       checked={answers[idx]}
                       onChange={() => handleCheckboxChange(idx)}
                     />
-                    <span className="question-text">{t(`drawingAnalyzer.questionGroups.${group.key}.questions.${qKey}.text`)}</span>
+                    <span className="question-text">
+                      {t(`drawingAnalyzer.questionGroups.${group.key}.questions.${qKey}.text`)}
+                    </span>
                     <span className="tooltip-container">
                       <span className="tooltip-icon">?</span>
-                      <span className="tooltip-text">{t(`drawingAnalyzer.questionGroups.${group.key}.questions.${qKey}.tip`)}</span>
+                      <span className="tooltip-text">
+                        {t(`drawingAnalyzer.questionGroups.${group.key}.questions.${qKey}.tip`)}
+                      </span>
                     </span>
                   </label>
                 );
@@ -174,7 +249,13 @@ function DrawingAnalyzer() {
       {error && <div className="analyzer-error">{error}</div>}
       {result && (
         <div className="analyzer-result">
-          <button className="download-pdf-btn" onClick={handleDownloadPDF} style={{ float: 'right', marginBottom: 8 }}>{t('drawingAnalyzer.downloadPDF')}</button>
+          <button 
+            className="download-pdf-btn" 
+            onClick={handleDownloadPDF} 
+            style={{ float: 'right', marginBottom: 8 }}
+          >
+            {t('drawingAnalyzer.downloadPDF')}
+          </button>
           <h3>{t('drawingAnalyzer.analysisResult')}</h3>
           <div ref={resultRef} style={{ background: '#fff', padding: 16 }}>
             {file && (
@@ -186,12 +267,15 @@ function DrawingAnalyzer() {
                 />
               </div>
             )}
-            <div className="analyzer-result-content"><ReactMarkdown>{result}</ReactMarkdown></div>
+            <div className="analyzer-result-content">
+              <ReactMarkdown>{result}</ReactMarkdown>
+            </div>
           </div>
         </div>
       )}
     </div>
   );
-}
+};
 
-export default DrawingAnalyzer; 
+export default DrawingAnalyzer;
+

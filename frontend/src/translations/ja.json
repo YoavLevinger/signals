@@ -1,0 +1,217 @@
+{
+  "app": {
+    "title": "絵画分析アプリ",
+    "loading": "読み込み中...",
+    "back": "← 戻る"
+  },
+  "navigation": {
+    "back": "戻る",
+    "home": "ホーム"
+  },
+  "drawingAnalyzer": {
+    "title": "絵画分析",
+    "uploadTitle": "絵をアップロード",
+    "uploadDescription": "分析する絵をアップロードしてください",
+    "cameraTitle": "写真を撮る",
+    "cameraDescription": "分析する絵の写真を撮ってください",
+    "analyzeButton": "絵を分析する",
+    "uploadButton": "絵をアップロード",
+    "takePhotoButton": "写真を撮る",
+    "retakeButton": "写真を撮り直す",
+    "analyzing": "絵を分析中...",
+    "error": "絵の分析中にエラーが発生しました",
+    "noFile": "ファイルを選択するか、写真を撮ってください",
+    "fileTooLarge": "ファイルが大きすぎます。最大サイズは5MBです",
+    "invalidFileType": "無効なファイルタイプです。JPG、PNG、またはJPEGファイルをアップロードしてください",
+    "selected": "選択済み",
+    "instructions": "説明：絵を確認し、該当する項目をすべてチェックしてください。複数選択が可能です。",
+    "analyzingWait": "画像を分析中です。少々お待ちください...",
+    "analysisResult": "分析結果",
+    "downloadPDF": "PDFをダウンロード",
+    "analyze": "分析する",
+    "noResults": "結果がありません",
+    "timeout": "リクエストがタイムアウトしました",
+    "questionGroups": {
+      "humanFigure": {
+        "header": "🧍 人物の特徴",
+        "questions": {
+          "hands": {
+            "text": "手が欠けている、切断されている、または極端に小さいですか？",
+            "tip": "無力感、主体性の喪失、または虐待の可能性を示す指標。\n✔️ 参考文献：PMC9221832 - NCBI"
+          },
+          "arms": {
+            "text": "腕が不釣り合いに大きく、または攻撃的に使用されていますか？",
+            "tip": "身体的攻撃への曝露または内面化された怒りを示す可能性があります。\n✔️ 参考文献：[Lev-Wiesel & Liraz, 2007]"
+          },
+          "neck": {
+            "text": "影響が欠けている、または頭が体から切り離されていますか？",
+            "tip": "トラウマ、解離、または虐待に関連しています。\n✔️ 参考文献：Allen & Tussey, 2012; Dillenburger, 2005"
+          },
+          "legs": {
+            "text": "脚がしっかりと閉じている、または不自然に交差していますか？",
+            "tip": "性的不快感、恥、またはトラウマを反映している可能性があります。\n✔️ 参考文献：Allen & Tussey, 2012; Sidun & Rosenthal, 1987"
+          },
+          "genitalia": {
+            "text": "生殖器が描写されている、または示唆されていますか（例：強調、露出、または詳細）？",
+            "tip": "重要な警告サイン、特に求められていない場合や非常に詳細な場合。\n✔️ 参考文献：芸術を通じて性的虐待を受けた子供を特定する"
+          }
+        }
+      },
+      "facialFeatures": {
+        "header": "👁️ 顔の特徴と表情",
+        "questions": {
+          "face": {
+            "text": "顔が悲しそう、泣いている、または目や口が欠けていますか？",
+            "tip": "感情的な引きこもりやトラウマを示唆する可能性があります。\n✔️ 参考文献：Koppitzの感情的指標"
+          },
+          "mouth": {
+            "text": "口が封じられている、縫い付けられている、または完全に欠けていますか？",
+            "tip": "沈黙化や話すことへの恐怖を象徴している可能性があります。\n✔️ 参考文献：人を描くテストの解釈"
+          },
+          "ears": {
+            "text": "耳が過度に大きく、または誇張されていますか？",
+            "tip": "過度の警戒心や危険への注意を示す可能性があります。\n✔️ 参考文献：PMC9221832 - NCBI"
+          }
+        }
+      },
+      "houseTreePerson": {
+        "header": "🏠 家-木-人（HTP）と環境的シンボル",
+        "questions": {
+          "house": {
+            "text": "家に扉や窓が欠けていますか？",
+            "tip": "しばしば脱出手段の欠如や孤立として解釈されます。\n✔️ 参考文献：Scott、ウィスコンシン大学研究"
+          },
+          "elements": {
+            "text": "家/木に暗い雲、過剰な雨、または格子などの要素がありますか？",
+            "tip": "恐怖、脅威、または感情的な監禁を象徴しています。\n✔️ 参考文献：DAPおよびHTP指標"
+          },
+          "trees": {
+            "text": "木が根なしで描かれている、または非常に小さいですか？",
+            "tip": "根拠、サポート、またはアイデンティティの欠如を示す可能性があります。\n✔️ 参考文献：心理分析表"
+          }
+        }
+      },
+      "symbolic": {
+        "header": "🎨 象徴的および感情的指標",
+        "questions": {
+          "phallic": {
+            "text": "陰茎の形（例：細長い楔、円、武器）がありますか？",
+            "tip": "無意識に性的曝露や混乱を反映している可能性があります。\n✔️ 参考文献：Malchiodi, 1990; Sidun & Rosenthal, 1987"
+          },
+          "colors": {
+            "text": "赤、黒、または暗い色が過度に使用されていますか？",
+            "tip": "高い感情的苦悩を抱える子供の絵によく見られます。\n✔️ 参考文献：Frontiers in Psychology, 2020"
+          },
+          "hearts": {
+            "text": "複数のハート、楔、または悲しい絵文字/顔文字がありますか？",
+            "tip": "自己嫌悪や歪んだ愛情を表している可能性があります。\n✔️ 参考文献：UW-Whitewater研究"
+          },
+          "isolation": {
+            "text": "絵は孤立を示していますか（例：子供が家族の人物から遠く離れている、または一人）？",
+            "tip": "感情的ネグレクトや分離に関連しています。\n✔️ 参考文献：人を描くテストとHTP評価"
+          }
+        }
+      }
+    },
+    "cameraError": "カメラにアクセスする際にエラーが発生しました"
+  },
+  "freeDrawing": {
+    "title": "自由な描画",
+    "brush": "🖌️ ブラシ",
+    "eraser": "🧽 消しゴム",
+    "clear": "🗑️ クリア",
+    "undo": "↩️ 元に戻す",
+    "redo": "↪️ やり直す"
+  },
+  "guidedDrawing": {
+    "title": "ガイド付き描画",
+    "brush": "🖌️ ブラシ",
+    "eraser": "🧽 消しゴム",
+    "hand": "🤚 手",
+    "clear": "🗑️ クリア",
+    "undo": "↩️ 元に戻す",
+    "redo": "↪️ やり直す",
+    "sections": {
+      "family": "家族",
+      "bodyParts": "体の部位",
+      "homeTools": "家庭用ツールとアクセサリー"
+    },
+    "items": {
+      "father": "父",
+      "mother": "母",
+      "brother": "兄/弟",
+      "sister": "姉/妹",
+      "chair": "椅子",
+      "table": "テーブル",
+      "lamp": "ランプ",
+      "book": "本",
+      "tv": "テレビ",
+      "phone": "電話",
+      "spoon": "スプーン",
+      "fork": "フォーク",
+      "knife": "ナイフ",
+      "cup": "カップ",
+      "bed": "ベッド",
+      "shoe": "靴",
+      "hat": "帽子",
+      "toothbrush": "歯ブラシ",
+      "soap": "石鹸",
+      "towel": "タオル",
+      "mirror": "鏡",
+      "clock": "時計",
+      "remote": "リモコン",
+      "scissors": "はさみ",
+      "broom": "ほうき",
+      "plant": "植物",
+      "fridge": "冷蔵庫",
+      "oven": "オーブン",
+      "washingMachine": "洗濯機",
+      "iron": "アイロン",
+      "vacuum": "掃除機",
+      "fan": "扇風機",
+      "curtain": "カーテン",
+      "picture": "絵",
+      "head": "頭",
+      "arm": "腕",
+      "leg": "脚",
+      "hand": "手",
+      "foot": "足",
+      "torso": "胴体",
+      "eye": "目",
+      "ear": "耳",
+      "mouth": "口",
+      "nose": "鼻",
+      "hair": "髪",
+      "finger": "指",
+      "toe": "つま先",
+      "neck": "首",
+      "eyebrow": "眉毛",
+      "eyelash": "まつげ"
+    }
+  },
+  "questioner": {
+    "title": "質問者"
+  },
+  "picker": {
+    "title": "選択ツール"
+  },
+  "director": {
+    "title": "ディレクター",
+    "uploadImage": "画像をアップロード",
+    "analyze": "分析する",
+    "clear": "クリア",
+    "describeImage": "画像を説明する",
+    "describePlaceholder": "見たものを説明してください...",
+    "send": "送信",
+    "sentMessage": "説明が送信されました！",
+    "previousImage": "前の画像",
+    "nextImage": "次の画像"
+  },
+  "results": {
+    "title": "分析結果",
+    "noResults": "結果がありません",
+    "error": "結果の読み込みエラー",
+    "tryAgain": "再試行"
+  }
+}
+

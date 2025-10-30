@@ -1,0 +1,217 @@
+{
+  "app": {
+    "title": "Aplicativo de Análise de Desenhos",
+    "loading": "Carregando...",
+    "back": "← Voltar"
+  },
+  "navigation": {
+    "back": "Voltar",
+    "home": "Início"
+  },
+  "drawingAnalyzer": {
+    "title": "Análise de Desenho",
+    "uploadTitle": "Carregar Desenho",
+    "uploadDescription": "Carregue um desenho para analisar",
+    "cameraTitle": "Tirar Foto",
+    "cameraDescription": "Tire uma foto de um desenho para analisar",
+    "analyzeButton": "Analisar Desenho",
+    "uploadButton": "Carregar Desenho",
+    "takePhotoButton": "Tirar Foto",
+    "retakeButton": "Tirar Foto Novamente",
+    "analyzing": "Analisando desenho...",
+    "error": "Erro ao analisar o desenho",
+    "noFile": "Por favor, selecione um arquivo ou tire uma foto",
+    "fileTooLarge": "Arquivo muito grande. Tamanho máximo é 5MB",
+    "invalidFileType": "Tipo de arquivo inválido. Por favor, carregue um arquivo JPG, PNG ou JPEG",
+    "selected": "Selecionado",
+    "instructions": "Instruções: Revise o desenho e marque todas as opções aplicáveis. Múltiplas seleções são permitidas.",
+    "analyzingWait": "Analisando imagem, por favor aguarde...",
+    "analysisResult": "Resultado da Análise",
+    "downloadPDF": "Baixar PDF",
+    "analyze": "Analisar",
+    "noResults": "Nenhum resultado disponível",
+    "timeout": "Tempo limite da requisição",
+    "questionGroups": {
+      "humanFigure": {
+        "header": "🧍 Características da Figura Humana",
+        "questions": {
+          "hands": {
+            "text": "As mãos estão ausentes, cortadas ou extremamente pequenas?",
+            "tip": "Indicador potencial de impotência, perda de autonomia ou abuso.\n✔️ Referência: PMC9221832 - NCBI"
+          },
+          "arms": {
+            "text": "Os braços são desproporcionalmente grandes ou usados de forma agressiva?",
+            "tip": "Pode indicar exposição a agressão física ou raiva internalizada.\n✔️ Referência: [Lev-Wiesel & Liraz, 2007]"
+          },
+          "neck": {
+            "text": "O pescoço está ausente ou a cabeça está separada do corpo?",
+            "tip": "Associado a trauma, dissociação ou abuso.\n✔️ Referência: Allen & Tussey, 2012; Dillenburger, 2005"
+          },
+          "legs": {
+            "text": "As pernas estão bem fechadas ou cruzadas de forma não natural?",
+            "tip": "Pode refletir desconforto sexual, vergonha ou trauma.\n✔️ Referência: Allen & Tussey, 2012; Sidun & Rosenthal, 1987"
+          },
+          "genitalia": {
+            "text": "Há genitais representados ou sugeridos (ex.: ênfase, exposição ou detalhes)?",
+            "tip": "Um sinal de alerta significativo, especialmente se não solicitado ou muito detalhado.\n✔️ Referência: Identificando Crianças Vítimas de Abuso Sexual através da Arte"
+          }
+        }
+      },
+      "facialFeatures": {
+        "header": "👁️ Características Faciais e Expressão",
+        "questions": {
+          "face": {
+            "text": "O rosto está triste, chorando ou falta olhos ou boca?",
+            "tip": "Pode sugerir afastamento emocional ou trauma.\n✔️ Referência: Indicadores Emocionais de Koppitz"
+          },
+          "mouth": {
+            "text": "A boca está selada, costurada ou completamente ausente?",
+            "tip": "Pode simbolizar silenciamento ou medo de falar.\n✔️ Referência: Interpretações do Teste Draw-A-Person"
+          },
+          "ears": {
+            "text": "As orelhas são excessivamente grandes ou exageradas?",
+            "tip": "Poderia indicar hipervigilância ou alerta ao perigo.\n✔️ Referência: PMC9221832 - NCBI"
+          }
+        }
+      },
+      "houseTreePerson": {
+        "header": "🏠 Casa-Árvore-Pessoa (HTP) e Símbolos Ambientais",
+        "questions": {
+          "house": {
+            "text": "A casa está sem portas ou janelas?",
+            "tip": "Frequentemente interpretado como falta de fuga ou isolamento.\n✔️ Referência: Scott, Estudo da Universidade de Wisconsin"
+          },
+          "elements": {
+            "text": "Há elementos como nuvens escuras, chuva excessiva ou barras na casa/árvore?",
+            "tip": "Simbolizam medo, ameaça ou confinamento emocional.\n✔️ Referência: Indicadores DAP e HTP"
+          },
+          "trees": {
+            "text": "As árvores são desenhadas sem raízes ou muito pequenas?",
+            "tip": "Pode indicar falta de fundamento, apoio ou identidade.\n✔️ Referência: Tabelas de Análise Psicológica"
+          }
+        }
+      },
+      "symbolic": {
+        "header": "🎨 Indicadores Simbólicos e Emocionais",
+        "questions": {
+          "phallic": {
+            "text": "Há formas fálicas (ex.: cunhas alongadas, círculos, armas)?",
+            "tip": "Pode refletir inconscientemente exposição sexual ou confusão.\n✔️ Referência: Malchiodi, 1990; Sidun & Rosenthal, 1987"
+          },
+          "colors": {
+            "text": "Há uso excessivo de vermelho, preto ou cores escuras?",
+            "tip": "Comum em desenhos de crianças com alto sofrimento emocional.\n✔️ Referência: Frontiers in Psychology, 2020"
+          },
+          "hearts": {
+            "text": "Há múltiplos corações, cunhas ou emojis/emoticons tristes?",
+            "tip": "Pode representar autoaversão ou afeição distorcida.\n✔️ Referência: Estudo UW-Whitewater"
+          },
+          "isolation": {
+            "text": "O desenho mostra isolamento (ex.: criança longe das figuras familiares ou sozinha)?",
+            "tip": "Associado a negligência emocional ou desapego.\n✔️ Referência: Avaliações Draw-A-Person e HTP"
+          }
+        }
+      }
+    },
+    "cameraError": "Erro ao acessar a câmera"
+  },
+  "freeDrawing": {
+    "title": "Desenho Livre",
+    "brush": "🖌️ Pincel",
+    "eraser": "🧽 Borracha",
+    "clear": "🗑️ Limpar",
+    "undo": "↩️ Desfazer",
+    "redo": "↪️ Refazer"
+  },
+  "guidedDrawing": {
+    "title": "Desenho Guiado",
+    "brush": "🖌️ Pincel",
+    "eraser": "🧽 Borracha",
+    "hand": "🤚 Mão",
+    "clear": "🗑️ Limpar",
+    "undo": "↩️ Desfazer",
+    "redo": "↪️ Refazer",
+    "sections": {
+      "family": "Família",
+      "bodyParts": "Partes do Corpo",
+      "homeTools": "Ferramentas e Acessórios Domésticos"
+    },
+    "items": {
+      "father": "Pai",
+      "mother": "Mãe",
+      "brother": "Irmão",
+      "sister": "Irmã",
+      "chair": "Cadeira",
+      "table": "Mesa",
+      "lamp": "Lâmpada",
+      "book": "Livro",
+      "tv": "TV",
+      "phone": "Telefone",
+      "spoon": "Colher",
+      "fork": "Garfo",
+      "knife": "Faca",
+      "cup": "Xícara",
+      "bed": "Cama",
+      "shoe": "Sapato",
+      "hat": "Chapéu",
+      "toothbrush": "Escova de Dentes",
+      "soap": "Sabonete",
+      "towel": "Toalha",
+      "mirror": "Espelho",
+      "clock": "Relógio",
+      "remote": "Controle Remoto",
+      "scissors": "Tesoura",
+      "broom": "Vassoura",
+      "plant": "Planta",
+      "fridge": "Geladeira",
+      "oven": "Forno",
+      "washingMachine": "Máquina de Lavar",
+      "iron": "Ferro de Passar",
+      "vacuum": "Aspirador",
+      "fan": "Ventilador",
+      "curtain": "Cortina",
+      "picture": "Imagem",
+      "head": "Cabeça",
+      "arm": "Braço",
+      "leg": "Perna",
+      "hand": "Mão",
+      "foot": "Pé",
+      "torso": "Torso",
+      "eye": "Olho",
+      "ear": "Orelha",
+      "mouth": "Boca",
+      "nose": "Nariz",
+      "hair": "Cabelo",
+      "finger": "Dedo",
+      "toe": "Dedo do Pé",
+      "neck": "Pescoço",
+      "eyebrow": "Sobrancelha",
+      "eyelash": "Cílio"
+    }
+  },
+  "questioner": {
+    "title": "Questionário"
+  },
+  "picker": {
+    "title": "Seletor"
+  },
+  "director": {
+    "title": "Diretor",
+    "uploadImage": "Carregar Imagem",
+    "analyze": "Analisar",
+    "clear": "Limpar",
+    "describeImage": "Descreva a Imagem",
+    "describePlaceholder": "Descreva o que você vê...",
+    "send": "Enviar",
+    "sentMessage": "Descrição enviada!",
+    "previousImage": "Imagem Anterior",
+    "nextImage": "Próxima Imagem"
+  },
+  "results": {
+    "title": "Resultados da Análise",
+    "noResults": "Nenhum resultado disponível",
+    "error": "Erro ao carregar os resultados",
+    "tryAgain": "Tentar Novamente"
+  }
+}
+

@@ -1,0 +1,217 @@
+{
+  "app": {
+    "title": "Application d'analyse de dessins",
+    "loading": "Chargement...",
+    "back": "← Retour"
+  },
+  "navigation": {
+    "back": "Retour",
+    "home": "Accueil"
+  },
+  "drawingAnalyzer": {
+    "title": "Analyse de dessin",
+    "uploadTitle": "Télécharger un dessin",
+    "uploadDescription": "Téléchargez un dessin à analyser",
+    "cameraTitle": "Prendre une photo",
+    "cameraDescription": "Prenez une photo d'un dessin à analyser",
+    "analyzeButton": "Analyser le dessin",
+    "uploadButton": "Télécharger le dessin",
+    "takePhotoButton": "Prendre une photo",
+    "retakeButton": "Reprendre la photo",
+    "analyzing": "Analyse du dessin...",
+    "error": "Erreur lors de l'analyse du dessin",
+    "noFile": "Veuillez sélectionner un fichier ou prendre une photo",
+    "fileTooLarge": "Le fichier est trop volumineux. La taille maximale est de 5 Mo",
+    "invalidFileType": "Type de fichier non valide. Veuillez télécharger un fichier JPG, PNG ou JPEG",
+    "selected": "Sélectionné",
+    "instructions": "Instructions : Examinez le dessin et cochez toutes les options qui s'appliquent. Les sélections multiples sont autorisées.",
+    "analyzingWait": "Analyse de l'image en cours, veuillez patienter...",
+    "analysisResult": "Résultat de l'analyse",
+    "downloadPDF": "Télécharger le PDF",
+    "analyze": "Analyser",
+    "noResults": "Aucun résultat disponible",
+    "timeout": "Délai d'attente dépassé",
+    "questionGroups": {
+      "humanFigure": {
+        "header": "🧍 Caractéristiques de la figure humaine",
+        "questions": {
+          "hands": {
+            "text": "Les mains sont-elles manquantes, coupées ou extrêmement petites ?",
+            "tip": "Indicateur potentiel d'impuissance, de perte d'autonomie ou d'abus.\n✔️ Référence : PMC9221832 - NCBI"
+          },
+          "arms": {
+            "text": "Les bras sont-ils disproportionnellement grands ou utilisés de manière agressive ?",
+            "tip": "Peut indiquer une exposition à l'agression physique ou à la colère internalisée.\n✔️ Référence : [Lev-Wiesel & Liraz, 2007]"
+          },
+          "neck": {
+            "text": "Le cou est-il manquant ou la tête est-elle détachée du corps ?",
+            "tip": "Associé à un traumatisme, une dissociation ou des abus.\n✔️ Référence : Allen & Tussey, 2012 ; Dillenburger, 2005"
+          },
+          "legs": {
+            "text": "Les jambes sont-elles étroitement fermées ou croisées de manière non naturelle ?",
+            "tip": "Peut refléter un inconfort sexuel, de la honte ou un traumatisme.\n✔️ Référence : Allen & Tussey, 2012 ; Sidun & Rosenthal, 1987"
+          },
+          "genitalia": {
+            "text": "Y a-t-il des organes génitaux représentés ou suggérés (par ex., accent, exposition ou détails) ?",
+            "tip": "Un signal d'alarme important, surtout s'il n'est pas sollicité ou très détaillé.\n✔️ Référence : Identifier les enfants victimes d'abus sexuels grâce à l'art"
+          }
+        }
+      },
+      "facialFeatures": {
+        "header": "👁️ Caractéristiques et expression du visage",
+        "questions": {
+          "face": {
+            "text": "Le visage est-il triste, pleure ou manque-t-il d'yeux ou de bouche ?",
+            "tip": "Peut suggérer un retrait émotionnel ou un traumatisme.\n✔️ Référence : Indicateurs émotionnels de Koppitz"
+          },
+          "mouth": {
+            "text": "La bouche est-elle scellée, cousue ou entièrement absente ?",
+            "tip": "Peut symboliser le silence imposé ou la peur de s'exprimer.\n✔️ Référence : Interprétations du test Draw-A-Person"
+          },
+          "ears": {
+            "text": "Les oreilles sont-elles excessivement grandes ou exagérées ?",
+            "tip": "Pourrait indiquer une hypervigilance ou une alerte au danger.\n✔️ Référence : PMC9221832 - NCBI"
+          }
+        }
+      },
+      "houseTreePerson": {
+        "header": "🏠 Maison-Arbre-Personne (HTP) et symboles environnementaux",
+        "questions": {
+          "house": {
+            "text": "La maison manque-t-elle de portes ou de fenêtres ?",
+            "tip": "Souvent interprété comme un manque d'issue ou d'isolement.\n✔️ Référence : Scott, Université du Wisconsin"
+          },
+          "elements": {
+            "text": "Y a-t-il des éléments comme des nuages sombres, une pluie excessive ou des barreaux sur la maison/l'arbre ?",
+            "tip": "Symbolisent la peur, la menace ou l'enfermement émotionnel.\n✔️ Référence : Indicateurs DAP et HTP"
+          },
+          "trees": {
+            "text": "Les arbres sont-ils dessinés sans racines ou très petits ?",
+            "tip": "Pourrait indiquer un manque d'ancrage, de soutien ou d'identité.\n✔️ Référence : Tableaux d'analyse psychologique"
+          }
+        }
+      },
+      "symbolic": {
+        "header": "🎨 Indicateurs symboliques et émotionnels",
+        "questions": {
+          "phallic": {
+            "text": "Y a-t-il des formes phalliques (par ex., coins allongés, cercles, armes) ?",
+            "tip": "Peut refléter inconsciemment une exposition sexuelle ou une confusion.\n✔️ Référence : Malchiodi, 1990 ; Sidun & Rosenthal, 1987"
+          },
+          "colors": {
+            "text": "Y a-t-il une utilisation excessive de rouge, noir ou de couleurs sombres ?",
+            "tip": "Courant dans les dessins d'enfants en détresse émotionnelle élevée.\n✔️ Référence : Frontiers in Psychology, 2020"
+          },
+          "hearts": {
+            "text": "Y a-t-il plusieurs cœurs, coins ou emojis/émoticônes tristes ?",
+            "tip": "Peut représenter l'auto-dépréciation ou l'affection déformée.\n✔️ Référence : Étude UW-Whitewater"
+          },
+          "isolation": {
+            "text": "Le dessin montre-t-il l'isolement (par ex., enfant loin des figures familiales ou seul) ?",
+            "tip": "Associé à la négligence émotionnelle ou au détachement.\n✔️ Référence : Évaluations Draw-A-Person et HTP"
+          }
+        }
+      }
+    },
+    "cameraError": "Erreur d'accès à la caméra"
+  },
+  "freeDrawing": {
+    "title": "Dessin libre",
+    "brush": "🖌️ Pinceau",
+    "eraser": "🧽 Gomme",
+    "clear": "🗑️ Effacer",
+    "undo": "↩️ Annuler",
+    "redo": "↪️ Refaire"
+  },
+  "guidedDrawing": {
+    "title": "Dessin guidé",
+    "brush": "🖌️ Pinceau",
+    "eraser": "🧽 Gomme",
+    "hand": "🤚 Main",
+    "clear": "🗑️ Effacer",
+    "undo": "↩️ Annuler",
+    "redo": "↪️ Refaire",
+    "sections": {
+      "family": "Famille",
+      "bodyParts": "Parties du corps",
+      "homeTools": "Outils et accessoires domestiques"
+    },
+    "items": {
+      "father": "Père",
+      "mother": "Mère",
+      "brother": "Frère",
+      "sister": "Sœur",
+      "chair": "Chaise",
+      "table": "Table",
+      "lamp": "Lampe",
+      "book": "Livre",
+      "tv": "TV",
+      "phone": "Téléphone",
+      "spoon": "Cuillère",
+      "fork": "Fourchette",
+      "knife": "Couteau",
+      "cup": "Tasse",
+      "bed": "Lit",
+      "shoe": "Chaussure",
+      "hat": "Chapeau",
+      "toothbrush": "Brosse à dents",
+      "soap": "Savon",
+      "towel": "Serviette",
+      "mirror": "Miroir",
+      "clock": "Horloge",
+      "remote": "Télécommande",
+      "scissors": "Ciseaux",
+      "broom": "Balai",
+      "plant": "Plante",
+      "fridge": "Réfrigérateur",
+      "oven": "Four",
+      "washingMachine": "Lave-linge",
+      "iron": "Fer à repasser",
+      "vacuum": "Aspirateur",
+      "fan": "Ventilateur",
+      "curtain": "Rideau",
+      "picture": "Image",
+      "head": "Tête",
+      "arm": "Bras",
+      "leg": "Jambe",
+      "hand": "Main",
+      "foot": "Pied",
+      "torso": "Torse",
+      "eye": "Œil",
+      "ear": "Oreille",
+      "mouth": "Bouche",
+      "nose": "Nez",
+      "hair": "Cheveux",
+      "finger": "Doigt",
+      "toe": "Orteil",
+      "neck": "Cou",
+      "eyebrow": "Sourcil",
+      "eyelash": "Cil"
+    }
+  },
+  "questioner": {
+    "title": "Questionnaire"
+  },
+  "picker": {
+    "title": "Sélection"
+  },
+  "director": {
+    "title": "Directeur",
+    "uploadImage": "Télécharger l'image",
+    "analyze": "Analyser",
+    "clear": "Effacer",
+    "describeImage": "Décrivez l'image",
+    "describePlaceholder": "Décrivez ce que vous voyez...",
+    "send": "Envoyer",
+    "sentMessage": "Description envoyée !",
+    "previousImage": "Image précédente",
+    "nextImage": "Image suivante"
+  },
+  "results": {
+    "title": "Résultats de l'analyse",
+    "noResults": "Aucun résultat disponible",
+    "error": "Erreur lors du chargement des résultats",
+    "tryAgain": "Réessayer"
+  }
+}
+

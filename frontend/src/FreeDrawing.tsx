@@ -1,42 +1,57 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
+import { Point, DrawingTool } from './types';
 
-function FreeDrawing() {
-  const canvasRef = React.useRef(null);
-  const [drawing, setDrawing] = React.useState(false);
-  const [color, setColor] = React.useState('#222');
-  const [tool, setTool] = React.useState('brush');
-  const [lastPos, setLastPos] = React.useState({ x: 0, y: 0 });
+const FreeDrawing: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [drawing, setDrawing] = useState<boolean>(false);
+  const [color, setColor] = useState<string>('#222');
+  const [tool, setTool] = useState<DrawingTool>('brush');
+  const [lastPos, setLastPos] = useState<Point>({ x: 0, y: 0 });
 
   const colors = ['#222', '#e53935', '#43a047', '#1e88e5', '#fbc02d', '#8e24aa', '#ff9800', '#00bcd4'];
 
-  React.useEffect(() => {
+  useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.lineWidth = tool === 'brush' ? 4 : 16;
     ctx.strokeStyle = tool === 'eraser' ? '#fff' : color;
   }, [color, tool]);
 
-  const getPos = (e) => {
-    const rect = canvasRef.current.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  const getPos = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>): Point => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+    
+    const rect = canvas.getBoundingClientRect();
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    
     return {
       x: clientX - rect.left,
       y: clientY - rect.top,
     };
   };
 
-  const startDrawing = (e) => {
+  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     setDrawing(true);
     setLastPos(getPos(e));
   };
 
-  const draw = (e) => {
+  const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     if (!drawing) return;
-    const ctx = canvasRef.current.getContext('2d');
+    
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     const pos = getPos(e);
     ctx.beginPath();
     ctx.moveTo(lastPos.x, lastPos.y);
@@ -53,7 +68,11 @@ function FreeDrawing() {
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
@@ -73,8 +92,18 @@ function FreeDrawing() {
           ))}
         </div>
         <div className="tool-buttons">
-          <button className={`tool-btn${tool === 'brush' ? ' selected' : ''}`} onClick={() => setTool('brush')}>🖌️ Brush</button>
-          <button className={`tool-btn${tool === 'eraser' ? ' selected' : ''}`} onClick={() => setTool('eraser')}>🧽 Eraser</button>
+          <button 
+            className={`tool-btn${tool === 'brush' ? ' selected' : ''}`} 
+            onClick={() => setTool('brush')}
+          >
+            🖌️ Brush
+          </button>
+          <button 
+            className={`tool-btn${tool === 'eraser' ? ' selected' : ''}`} 
+            onClick={() => setTool('eraser')}
+          >
+            🧽 Eraser
+          </button>
           <button className="tool-btn" onClick={clearCanvas}>🗑️ Clear</button>
         </div>
       </div>
@@ -95,6 +124,7 @@ function FreeDrawing() {
       </div>
     </div>
   );
-}
+};
 
-export default FreeDrawing; 
+export default FreeDrawing;
+

@@ -1,0 +1,217 @@
+{
+  "app": {
+    "title": "绘画分析应用",
+    "loading": "加载中...",
+    "back": "← 返回"
+  },
+  "navigation": {
+    "back": "返回",
+    "home": "首页"
+  },
+  "drawingAnalyzer": {
+    "title": "绘画分析",
+    "uploadTitle": "上传绘画",
+    "uploadDescription": "上传一幅绘画进行分析",
+    "cameraTitle": "拍照",
+    "cameraDescription": "拍摄一幅绘画的照片进行分析",
+    "analyzeButton": "分析绘画",
+    "uploadButton": "上传绘画",
+    "takePhotoButton": "拍照",
+    "retakeButton": "重新拍照",
+    "analyzing": "正在分析绘画...",
+    "error": "分析绘画时出错",
+    "noFile": "请选择文件或拍照",
+    "fileTooLarge": "文件太大。最大大小为5MB",
+    "invalidFileType": "无效的文件类型。请上传JPG、PNG或JPEG文件",
+    "selected": "已选择",
+    "instructions": "说明：查看绘画并勾选所有适用的选项。允许多选。",
+    "analyzingWait": "正在分析图像，请稍候...",
+    "analysisResult": "分析结果",
+    "downloadPDF": "下载PDF",
+    "analyze": "分析",
+    "noResults": "无可用结果",
+    "timeout": "请求超时",
+    "questionGroups": {
+      "humanFigure": {
+        "header": "🧍 人体特征",
+        "questions": {
+          "hands": {
+            "text": "手是否缺失、被切断或极小？",
+            "tip": "可能表示无助、失去自主性或遭受虐待。\n✔️ 参考文献：PMC9221832 - NCBI"
+          },
+          "arms": {
+            "text": "手臂是否不成比例地大或用于攻击？",
+            "tip": "可能表示遭受身体攻击或内化的愤怒。\n✔️ 参考文献：[Lev-Wiesel & Liraz, 2007]"
+          },
+          "neck": {
+            "text": "脖子是否缺失或头部与身体分离？",
+            "tip": "与创伤、分离或虐待相关。\n✔️ 参考文献：Allen & Tussey, 2012; Dillenburger, 2005"
+          },
+          "legs": {
+            "text": "腿是否紧紧闭合或异常交叉？",
+            "tip": "可能反映性不适、羞耻或创伤。\n✔️ 参考文献：Allen & Tussey, 2012; Sidun & Rosenthal, 1987"
+          },
+          "genitalia": {
+            "text": "是否描绘或暗示生殖器（例如，强调、暴露或细节）？",
+            "tip": "一个重要的危险信号，特别是未经请求或高度详细的。\n✔️ 参考文献：通过艺术识别遭受性虐待的儿童"
+          }
+        }
+      },
+      "facialFeatures": {
+        "header": "👁️ 面部特征和表情",
+        "questions": {
+          "face": {
+            "text": "面部是否悲伤、哭泣或缺少眼睛或嘴巴？",
+            "tip": "可能暗示情感退缩或创伤。\n✔️ 参考文献：Koppitz的情绪指标"
+          },
+          "mouth": {
+            "text": "嘴巴是否被密封、缝合或完全缺失？",
+            "tip": "可能象征沉默或害怕说出来。\n✔️ 参考文献：画人测试解释"
+          },
+          "ears": {
+            "text": "耳朵是否过大或夸张？",
+            "tip": "可能表示过度警觉或对危险的警觉。\n✔️ 参考文献：PMC9221832 - NCBI"
+          }
+        }
+      },
+      "houseTreePerson": {
+        "header": "🏠 房-树-人（HTP）和环境符号",
+        "questions": {
+          "house": {
+            "text": "房子是否缺少门或窗户？",
+            "tip": "通常被解释为缺乏逃生途径或孤立。\n✔️ 参考文献：Scott，威斯康星大学研究"
+          },
+          "elements": {
+            "text": "是否有乌云、过度降雨或房屋/树木上的栏杆等元素？",
+            "tip": "象征恐惧、威胁或情感禁锢。\n✔️ 参考文献：DAP和HTP指标"
+          },
+          "trees": {
+            "text": "树木是否没有根或非常小？",
+            "tip": "可能表示缺乏根基、支持或身份认同。\n✔️ 参考文献：心理分析表"
+          }
+        }
+      },
+      "symbolic": {
+        "header": "🎨 象征性和情感指标",
+        "questions": {
+          "phallic": {
+            "text": "是否有阴茎形状（例如，细长的楔形、圆形、武器）？",
+            "tip": "可能无意识地反映性暴露或困惑。\n✔️ 参考文献：Malchiodi, 1990; Sidun & Rosenthal, 1987"
+          },
+          "colors": {
+            "text": "是否过度使用红色、黑色或深色？",
+            "tip": "在高情绪困扰儿童的绘画中很常见。\n✔️ 参考文献：Frontiers in Psychology, 2020"
+          },
+          "hearts": {
+            "text": "是否有多个心形、楔形或悲伤的表情符号/表情？",
+            "tip": "可能代表自我厌恶或扭曲的情感。\n✔️ 参考文献：UW-Whitewater研究"
+          },
+          "isolation": {
+            "text": "绘画是否显示孤立（例如，儿童远离家庭成员或独自一人）？",
+            "tip": "与情感忽视或分离相关。\n✔️ 参考文献：画人和HTP评估"
+          }
+        }
+      }
+    },
+    "cameraError": "访问摄像头时出错"
+  },
+  "freeDrawing": {
+    "title": "自由绘画",
+    "brush": "🖌️ 画笔",
+    "eraser": "🧽 橡皮擦",
+    "clear": "🗑️ 清除",
+    "undo": "↩️ 撤销",
+    "redo": "↪️ 重做"
+  },
+  "guidedDrawing": {
+    "title": "引导绘画",
+    "brush": "🖌️ 画笔",
+    "eraser": "🧽 橡皮擦",
+    "hand": "🤚 手",
+    "clear": "🗑️ 清除",
+    "undo": "↩️ 撤销",
+    "redo": "↪️ 重做",
+    "sections": {
+      "family": "家庭",
+      "bodyParts": "身体部位",
+      "homeTools": "家居工具和配件"
+    },
+    "items": {
+      "father": "父亲",
+      "mother": "母亲",
+      "brother": "兄弟",
+      "sister": "姐妹",
+      "chair": "椅子",
+      "table": "桌子",
+      "lamp": "台灯",
+      "book": "书",
+      "tv": "电视",
+      "phone": "电话",
+      "spoon": "勺子",
+      "fork": "叉子",
+      "knife": "刀子",
+      "cup": "杯子",
+      "bed": "床",
+      "shoe": "鞋子",
+      "hat": "帽子",
+      "toothbrush": "牙刷",
+      "soap": "肥皂",
+      "towel": "毛巾",
+      "mirror": "镜子",
+      "clock": "时钟",
+      "remote": "遥控器",
+      "scissors": "剪刀",
+      "broom": "扫帚",
+      "plant": "植物",
+      "fridge": "冰箱",
+      "oven": "烤箱",
+      "washingMachine": "洗衣机",
+      "iron": "熨斗",
+      "vacuum": "吸尘器",
+      "fan": "风扇",
+      "curtain": "窗帘",
+      "picture": "图片",
+      "head": "头",
+      "arm": "手臂",
+      "leg": "腿",
+      "hand": "手",
+      "foot": "脚",
+      "torso": "躯干",
+      "eye": "眼睛",
+      "ear": "耳朵",
+      "mouth": "嘴巴",
+      "nose": "鼻子",
+      "hair": "头发",
+      "finger": "手指",
+      "toe": "脚趾",
+      "neck": "脖子",
+      "eyebrow": "眉毛",
+      "eyelash": "睫毛"
+    }
+  },
+  "questioner": {
+    "title": "问卷调查"
+  },
+  "picker": {
+    "title": "选择器"
+  },
+  "director": {
+    "title": "指导者",
+    "uploadImage": "上传图片",
+    "analyze": "分析",
+    "clear": "清除",
+    "describeImage": "描述图片",
+    "describePlaceholder": "描述您看到的内容...",
+    "send": "发送",
+    "sentMessage": "描述已发送！",
+    "previousImage": "上一张图片",
+    "nextImage": "下一张图片"
+  },
+  "results": {
+    "title": "分析结果",
+    "noResults": "无可用结果",
+    "error": "加载结果时出错",
+    "tryAgain": "重试"
+  }
+}
+

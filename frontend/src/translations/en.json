@@ -27,6 +27,10 @@
     "instructions": "Instructions: Review the drawing and check all that apply. Multiple selections are allowed.",
     "analyzingWait": "Analyzing image, please wait...",
     "analysisResult": "Analysis Result",
+    "downloadPDF": "Download PDF",
+    "analyze": "Analyze",
+    "noResults": "No results available",
+    "timeout": "Request timeout",
     "questionGroups": {
       "humanFigure": {
         "header": "🧍 Human Figure Characteristics",
